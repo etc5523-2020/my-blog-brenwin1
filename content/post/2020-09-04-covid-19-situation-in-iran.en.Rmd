@@ -37,7 +37,7 @@ This pandemic could not arrive at a worse time. It coincided with [country's par
 
 Furthermore, their economy was in turmoil even before the outbreak, as tough sanctions progressively tightened as part of [Trump's administration's "maximum pressure strategy"](https://www.whitehouse.gov/briefings-statements/president-donald-j-trumps-new-strategy-iran/) after US withdrew from international nuclear agreement with Iran. This drastically drained Iran's ability to access medical and healthcare supplies to combat the virus, urging Iran [appeal for a $5 billion emergency loan from International Monetary Fund(IMF)](https://www.bbc.com/news/world-middle-east-52217600). This also implicated its testing capabilities and inadequate testing kits; having only [few labs to obtain test results](https://academic.oup.com/jtm/article/27/5/taaa077/5838119), it delayed testing extensively.
 
-All these amid rising political tensions nationally and internationally. In November 2019, the oil-rich country faced [an unprecedented oil price hike and widespread protests](https://www.rferl.org/a/protests-clashes-iran-gasoline-price-rise-ration/30274995.html) were ravaging the country. While the demand for oil decreases. In January 2020, Iran had to deal with [US assassination of top Iranian general](https://www.bbc.com/news/world-middle-east-50979463) and [mistake of firing missle at Ukrainian airliner](https://www.theguardian.com/world/2020/feb/03/iran-knew-from-start-it-had-shot-down-jet-says-ukrainian-president). 
+All these amid rising political tensions nationally and internationally. In November 2019, the oil-rich country faced [an unprecedented oil price hike and widespread protests](https://www.rferl.org/a/protests-clashes-iran-gasoline-price-rise-ration/30274995.html) were ravaging the country while the demand for oil decreases. In January 2020, Iran had to deal with [US assassination of top Iranian general](https://www.bbc.com/news/world-middle-east-50979463) and [mistake of firing missle at Ukrainian airliner](https://www.theguardian.com/world/2020/feb/03/iran-knew-from-start-it-had-shot-down-jet-says-ukrainian-president). 
 
 These are sensitive and crucial times for the government. Tough decisions needs to made as Iran faces the pandemic in the busiest period of the year (Iranian New Year). As Iran soon become the epicenter of the virus, many criticisms arise that the government incentivized for not being transparent in updating the local situation to the locals and rest of the world amid [data leak](https://www.bbc.com/news/world-middle-east-53598965). Iran had started off with the [highest mortality rate outside China](https://www.nbcnews.com/health/health-news/why-iran-s-reported-mortality-rate-coronavirus-higher-other-countries-n1142646).
 
@@ -50,7 +50,25 @@ Data serves to facilitate data exploration into Iran's critical situation motiva
 
 ## Virus containment & measures   
 
-These 2 tables are looks at the related to the effect of the virus but also the government measures implemented to combat the virus. The data sources comes from [John Hopkins University CSSE](Covid-19 data from the Johns Hopkins University CSSE Github Repo) and [Assessmenet Capacities Project (ACAPS)](https://www.acaps.org/covid19-government-measures-dataset) respectively. These are smoothly accessible via [tidycovid19 package](https://github.com/joachim-gassen/tidycovid19).   
+These 2 tables are looks at the related to the effect of the virus but also the government measures implemented to combat the virus. The data sources comes from [John Hopkins University CSSE](Covid-19 data from the Johns Hopkins University CSSE Github Repo) (widely considered the standard resource for researchers & general audience) and [Assessmenet Capacities Project (ACAPS)](https://www.acaps.org/covid19-government-measures-dataset) respectively. These variables are smoothly selected from and accessible via  [tidycovid19 package](https://github.com/joachim-gassen/tidycovid19).   
+
+
+
+```{r tidycovid19_variables_defn, echo = FALSE}
+tidycovid19_df <- tibble::tribble(~Variable, ~ Description,
+                "date", "Corresponding date",
+                "confirmed", "cumulative confirmed cases",
+                "deaths", "cumulative death counts",
+                "recovered", "cumulative recovered cases",
+                "mortality rate", "deaths/confirmed",
+                "soc_dist", "social distancing measures reported up to date by ACAPS, net of lifted restrictions",
+                "mov_rest", "number of movement restrictions reported up to date by ACAPS, net of lifted restrictions",
+                "pub_health", "number of public health measures reported up to date by ACAPS, net of lifted restrictions",
+                "gov_soc_econ", "number of social and economic measures reported up to date by ACAPS, net of lifted restrictions") %>% 
+  as.data.frame()
+
+formattable(tidycovid19_df)
+```
 
 
 ```{r tidycovid19-data, include = FALSE}

@@ -29,7 +29,7 @@ link-citations: true
 <p>Iran is one of if not the worse-hit country in the world from the covid-19 pandemic. It was the first country in Middle East to come into contact with the virus when it officially announced with <a href="https://apnews.com/2b8f437c6a5cd6c556e5e97f7be8254a">2 deaths from the virus on 19 February 2020</a>.</p>
 <p>This pandemic could not arrive at a worse time. It coincided with <a href="https://www.reuters.com/article/us-iran-election-khamenei/iran-announces-low-poll-turnout-blames-coronavirus-propaganda-idUSKCN20H09Z">country’s parliamentary election and also 1979 Islamic revolution</a>- its reputation was (and still is) at stake.</p>
 <p>Furthermore, their economy was in turmoil even before the outbreak, as tough sanctions progressively tightened as part of <a href="https://www.whitehouse.gov/briefings-statements/president-donald-j-trumps-new-strategy-iran/">Trump’s administration’s “maximum pressure strategy”</a> after US withdrew from international nuclear agreement with Iran. This drastically drained Iran’s ability to access medical and healthcare supplies to combat the virus, urging Iran <a href="https://www.bbc.com/news/world-middle-east-52217600">appeal for a $5 billion emergency loan from International Monetary Fund(IMF)</a>. This also implicated its testing capabilities and inadequate testing kits; having only <a href="https://academic.oup.com/jtm/article/27/5/taaa077/5838119">few labs to obtain test results</a>, it delayed testing extensively.</p>
-<p>All these amid rising political tensions nationally and internationally. In November 2019, the oil-rich country faced <a href="https://www.rferl.org/a/protests-clashes-iran-gasoline-price-rise-ration/30274995.html">an unprecedented oil price hike and widespread protests</a> were ravaging the country. While the demand for oil decreases. In January 2020, Iran had to deal with <a href="https://www.bbc.com/news/world-middle-east-50979463">US assassination of top Iranian general</a> and <a href="https://www.theguardian.com/world/2020/feb/03/iran-knew-from-start-it-had-shot-down-jet-says-ukrainian-president">mistake of firing missle at Ukrainian airliner</a>.</p>
+<p>All these amid rising political tensions nationally and internationally. In November 2019, the oil-rich country faced <a href="https://www.rferl.org/a/protests-clashes-iran-gasoline-price-rise-ration/30274995.html">an unprecedented oil price hike and widespread protests</a> were ravaging the country while the demand for oil decreases. In January 2020, Iran had to deal with <a href="https://www.bbc.com/news/world-middle-east-50979463">US assassination of top Iranian general</a> and <a href="https://www.theguardian.com/world/2020/feb/03/iran-knew-from-start-it-had-shot-down-jet-says-ukrainian-president">mistake of firing missle at Ukrainian airliner</a>.</p>
 <p>These are sensitive and crucial times for the government. Tough decisions needs to made as Iran faces the pandemic in the busiest period of the year (Iranian New Year). As Iran soon become the epicenter of the virus, many criticisms arise that the government incentivized for not being transparent in updating the local situation to the locals and rest of the world amid <a href="https://www.bbc.com/news/world-middle-east-53598965">data leak</a>. Iran had started off with the <a href="https://www.nbcnews.com/health/health-news/why-iran-s-reported-mortality-rate-coronavirus-higher-other-countries-n1142646">highest mortality rate outside China</a>.</p>
 <p>With lifting of restrictions lurking in the talks, I think it is reasonable to doubt if
 it is premature as the economy cannot sustain any longer or the government is playing down the situation. We might better understand how the virus unfolded given some data.</p>
@@ -39,7 +39,93 @@ it is premature as the economy cannot sustain any longer or the government is pl
 <p>Data serves to facilitate data exploration into Iran’s critical situation motivated by <a href="https://www.researchgate.net/publication/339887510_Mapping_the_incidence_of_the_COVID-19_hotspot_in_Iran_-_Implications_for_Travellers">lack of studies conducted</a>.</p>
 <div id="virus-containment-measures" class="section level2">
 <h2>Virus containment &amp; measures</h2>
-<p>These 2 tables are looks at the related to the effect of the virus but also the government measures implemented to combat the virus. The data sources comes from <a href="Covid-19%20data%20from%20the%20Johns%20Hopkins%20University%20CSSE%20Github%20Repo">John Hopkins University CSSE</a> and <a href="https://www.acaps.org/covid19-government-measures-dataset">Assessmenet Capacities Project (ACAPS)</a> respectively. These are smoothly accessible via <a href="https://github.com/joachim-gassen/tidycovid19">tidycovid19 package</a>.</p>
+<p>These 2 tables are looks at the related to the effect of the virus but also the government measures implemented to combat the virus. The data sources comes from <a href="Covid-19%20data%20from%20the%20Johns%20Hopkins%20University%20CSSE%20Github%20Repo">John Hopkins University CSSE</a> (widely considered the standard resource for researchers &amp; general audience) and <a href="https://www.acaps.org/covid19-government-measures-dataset">Assessmenet Capacities Project (ACAPS)</a> respectively. These variables are smoothly selected from and accessible via <a href="https://github.com/joachim-gassen/tidycovid19">tidycovid19 package</a>.</p>
+<table class="table table-condensed">
+<thead>
+<tr>
+<th style="text-align:right;">
+Variable
+</th>
+<th style="text-align:right;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+date
+</td>
+<td style="text-align:right;">
+Corresponding date
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+confirmed
+</td>
+<td style="text-align:right;">
+cumulative confirmed cases
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+deaths
+</td>
+<td style="text-align:right;">
+cumulative death counts
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+recovered
+</td>
+<td style="text-align:right;">
+cumulative recovered cases
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+mortality rate
+</td>
+<td style="text-align:right;">
+deaths/confirmed
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+soc_dist
+</td>
+<td style="text-align:right;">
+social distancing measures reported up to date by ACAPS, net of lifted restrictions
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+mov_rest
+</td>
+<td style="text-align:right;">
+number of movement restrictions reported up to date by ACAPS, net of lifted restrictions
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+pub_health
+</td>
+<td style="text-align:right;">
+number of public health measures reported up to date by ACAPS, net of lifted restrictions
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+gov_soc_econ
+</td>
+<td style="text-align:right;">
+number of social and economic measures reported up to date by ACAPS, net of lifted restrictions
+</td>
+</tr>
+</tbody>
+</table>
 <div id="htmlwidget-1" style="width:100%;height:480px;" class="widgetframe html-widget"></div>
 <script type="application/json" data-for="htmlwidget-1">{"x":{"url":"/post/2020-09-04-covid-19-situation-in-iran.en_files/figure-html//widgets/widget_tidycovid19-dt.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
 <div id="htmlwidget-2" style="width:100%;height:480px;" class="widgetframe html-widget"></div>
