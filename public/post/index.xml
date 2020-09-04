@@ -5,12 +5,135 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 04 Sep 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>COVID-19 Situation in Iran</title>
+      <link>/post/covid-19-situation-in-iran/</link>
+      <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>/post/covid-19-situation-in-iran/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/pymjs/pym.v1.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/widgetframe-binding/widgetframe.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;background&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Background&lt;/h1&gt;
+&lt;p&gt;Iran is one of if not the worse-hit country in the world from the covid-19 pandemic. It was the first country in Middle East to come into contact with the virus when it officially announced with &lt;a href=&#34;https://apnews.com/2b8f437c6a5cd6c556e5e97f7be8254a&#34;&gt;2 deaths from the virus on 19 February 2020&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This pandemic could not arrive at a worse time. It coincided with &lt;a href=&#34;https://www.reuters.com/article/us-iran-election-khamenei/iran-announces-low-poll-turnout-blames-coronavirus-propaganda-idUSKCN20H09Z&#34;&gt;country’s parliamentary election and also 1979 Islamic revolution&lt;/a&gt;- its reputation was (and still is) at stake.&lt;/p&gt;
+&lt;p&gt;Furthermore, their economy was in turmoil even before the outbreak, as tough sanctions progressively tightened as part of &lt;a href=&#34;https://www.whitehouse.gov/briefings-statements/president-donald-j-trumps-new-strategy-iran/&#34;&gt;Trump’s administration’s “maximum pressure strategy”&lt;/a&gt; after US withdrew from international nuclear agreement with Iran. This drastically drained Iran’s ability to access medical and healthcare supplies to combat the virus, urging Iran &lt;a href=&#34;https://www.bbc.com/news/world-middle-east-52217600&#34;&gt;appeal for a $5 billion emergency loan from International Monetary Fund(IMF)&lt;/a&gt;. This also implicated its testing capabilities and inadequate testing kits; having only &lt;a href=&#34;https://academic.oup.com/jtm/article/27/5/taaa077/5838119&#34;&gt;few labs to obtain test results&lt;/a&gt;, it delayed testing extensively.&lt;/p&gt;
+&lt;p&gt;All these amid rising political tensions nationally and internationally. In November 2019, the oil-rich country faced &lt;a href=&#34;https://www.rferl.org/a/protests-clashes-iran-gasoline-price-rise-ration/30274995.html&#34;&gt;an unprecedented oil price hike and widespread protests&lt;/a&gt; were ravaging the country. While the demand for oil decreases. In January 2020, Iran had to deal with &lt;a href=&#34;https://www.bbc.com/news/world-middle-east-50979463&#34;&gt;US assassination of top Iranian general&lt;/a&gt; and &lt;a href=&#34;https://www.theguardian.com/world/2020/feb/03/iran-knew-from-start-it-had-shot-down-jet-says-ukrainian-president&#34;&gt;mistake of firing missle at Ukrainian airliner&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;These are sensitive and crucial times for the government. Tough decisions needs to made as Iran faces the pandemic in the busiest period of the year (Iranian New Year). As Iran soon become the epicenter of the virus, many criticisms arise that the government incentivized for not being transparent in updating the local situation to the locals and rest of the world amid &lt;a href=&#34;https://www.bbc.com/news/world-middle-east-53598965&#34;&gt;data leak&lt;/a&gt;. Iran had started off with the &lt;a href=&#34;https://www.nbcnews.com/health/health-news/why-iran-s-reported-mortality-rate-coronavirus-higher-other-countries-n1142646&#34;&gt;highest mortality rate outside China&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;With lifting of restrictions lurking in the talks, I think it is reasonable to doubt if
+it is premature as the economy cannot sustain any longer or the government is playing down the situation. We might better understand how the virus unfolded given some data.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-description&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Data Description&lt;/h1&gt;
+&lt;p&gt;Data serves to facilitate data exploration into Iran’s critical situation motivated by &lt;a href=&#34;https://www.researchgate.net/publication/339887510_Mapping_the_incidence_of_the_COVID-19_hotspot_in_Iran_-_Implications_for_Travellers&#34;&gt;lack of studies conducted&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;virus-containment-measures&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Virus containment &amp;amp; measures&lt;/h2&gt;
+&lt;p&gt;These 2 tables are looks at the related to the effect of the virus but also the government measures implemented to combat the virus. The data sources comes from &lt;a href=&#34;Covid-19%20data%20from%20the%20Johns%20Hopkins%20University%20CSSE%20Github%20Repo&#34;&gt;John Hopkins University CSSE&lt;/a&gt; and &lt;a href=&#34;https://www.acaps.org/covid19-government-measures-dataset&#34;&gt;Assessmenet Capacities Project (ACAPS)&lt;/a&gt; respectively. These are smoothly accessible via &lt;a href=&#34;https://github.com/joachim-gassen/tidycovid19&#34;&gt;tidycovid19 package&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:100%;height:480px;&#34; class=&#34;widgetframe html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;url&#34;:&#34;/post/2020-09-04-covid-19-situation-in-iran.en_files/figure-html//widgets/widget_tidycovid19-dt.html&#34;,&#34;options&#34;:{&#34;xdomain&#34;:&#34;*&#34;,&#34;allowfullscreen&#34;:false,&#34;lazyload&#34;:false}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:100%;height:480px;&#34; class=&#34;widgetframe html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;url&#34;:&#34;/post/2020-09-04-covid-19-situation-in-iran.en_files/figure-html//widgets/widget_measures_dt.html&#34;,&#34;options&#34;:{&#34;xdomain&#34;:&#34;*&#34;,&#34;allowfullscreen&#34;:false,&#34;lazyload&#34;:false}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;/div&gt;
+&lt;div id=&#34;economic-outlook&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Economic outlook&lt;/h2&gt;
+&lt;p&gt;For economic outlook, variables were centered around the six key indicators of economy according from &lt;a href=&#34;https://www.imf.org/external/index.htm&#34;&gt;IMF&lt;/a&gt;.&lt;br /&gt;
+&lt;code&gt;alfred&lt;/code&gt; package was used extensively to extract the data.&lt;/p&gt;
+&lt;p&gt;Data across past 10 years were used. Last Data vantage chosen (4 April 2020). Note than year 2021 is an estimate by IMF.&lt;/p&gt;
+&lt;p&gt;Variables include:&lt;/p&gt;
+&lt;table class=&#34;table table-condensed&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Variable
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+Description
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+year
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+Year of measurement
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+real_gdp
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+Real GDP in Constant Price, not seasonally adjusted (in %)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+non_oil_real_gdp
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+portion of GDP contributed by non-oil sectors
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+oil_real_gdp
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+portion of GDP contributed by oil sectors
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+CPI
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+inflation rate calculated via CPI
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+unemployment_rate
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+unemployment rate
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+current_ac_balance
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+current account balance to analyse net exports
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+net_lending_borrowing
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+Central government net lending/borrowing(central government fiscal balance)
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div id=&#34;htmlwidget-3&#34; style=&#34;width:100%;height:480px;&#34; class=&#34;widgetframe html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-3&#34;&gt;{&#34;x&#34;:{&#34;url&#34;:&#34;/post/2020-09-04-covid-19-situation-in-iran.en_files/figure-html//widgets/widget_unnamed-chunk-3.html&#34;,&#34;options&#34;:{&#34;xdomain&#34;:&#34;*&#34;,&#34;allowfullscreen&#34;:false,&#34;lazyload&#34;:false}},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
   </channel>
 </rss>

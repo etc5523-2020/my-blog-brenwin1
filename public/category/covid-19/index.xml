@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>covid-19 | Brenwin ETC5523 blog</title>
+    <link>/category/covid-19/</link>
+      <atom:link href="/category/covid-19/index.xml" rel="self" type="application/rss+xml" />
+    <description>covid-19</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 02 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>covid-19</title>
+      <link>/category/covid-19/</link>
+    </image>
+    
+    <item>
+      <title>Short Data Story on Iran covid-19</title>
+      <link>/post/short-data-story-on-iran-covid-19/</link>
+      <pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>/post/short-data-story-on-iran-covid-19/</guid>
+      <description>
+
+
+&lt;div id=&#34;background&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Background&lt;/h1&gt;
+&lt;p&gt;Iran is one of if not the worse-hit country from coronavirus pandemic. The timing
+of the pandemic could not have come at a worse time. It coincides with the
+country’s parliamentary election,&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Short Data Story on Iran covid-19</title>
+      <link>/post/short-data-story-on-iran-covid-19/</link>
+      <pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>/post/short-data-story-on-iran-covid-19/</guid>
+      <description>
+
+
+&lt;div id=&#34;data-exploration&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Data Exploration&lt;/h1&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
