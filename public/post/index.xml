@@ -123,6 +123,22 @@ gov_soc_econ
 number of social and economic measures reported up to date by ACAPS, net of lifted restrictions
 &lt;/td&gt;
 &lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+lockdown
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+number of lockdown measures reported up to date by ACAPS, net of lifted restrictions
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+population
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+Iran’s population reported by World Bank
+&lt;/td&gt;
+&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:100%;height:480px;&#34; class=&#34;widgetframe html-widget&#34;&gt;&lt;/div&gt;

@@ -64,7 +64,9 @@ tidycovid19_df <- tibble::tribble(~Variable, ~ Description,
                 "soc_dist", "social distancing measures reported up to date by ACAPS, net of lifted restrictions",
                 "mov_rest", "number of movement restrictions reported up to date by ACAPS, net of lifted restrictions",
                 "pub_health", "number of public health measures reported up to date by ACAPS, net of lifted restrictions",
-                "gov_soc_econ", "number of social and economic measures reported up to date by ACAPS, net of lifted restrictions") %>% 
+                "gov_soc_econ", "number of social and economic measures reported up to date by ACAPS, net of lifted restrictions",
+                "lockdown", "number of lockdown measures reported up to date by ACAPS, net of lifted restrictions", 
+                "population", "Iran's population reported by World Bank") %>% 
   as.data.frame()
 
 formattable(tidycovid19_df)
