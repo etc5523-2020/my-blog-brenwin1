@@ -1,0 +1,231 @@
+---
+title: covid-19 situation in Phillipines
+author: Brenwin
+date: '2020-09-16'
+slug: covid-19-situation-in-phillipines
+categories:
+  - covid19
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-09-16T21:43:24+10:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+library(tidyverse)
+library(plotly)
+library(crosstalk)
+library(lubridate)
+```
+
+# Overview of Coronavirus cases in the world's most stringent lockdown country
+```{r readin-data}
+case_info <- read_csv("data/case-info.csv")
+
+daily_report <- read_csv("data/daily-report.csv")
+
+testing_agg <- read_csv("data/testing-aggregates.csv")
+
+base_data <- read_csv("data/base-data.csv")
+```
+
+```{r case-info-wrangling}
+# select relevant variables
+case_info_clean <- case_info %>% 
+  select(AgeGroup, Sex, DateRepConf, DateDied, DateRecover, RemovalType, Admitted, RegionRes, ProvRes, HealthStatus, Quarantined)
+
+# daily cases
+case_info_clean <- case_info_clean %>%
+  group_by(DateRepConf) %>% 
+  mutate(cases = n()) 
+
+# daily recovered  
+case_info_clean <- case_info_clean %>% 
+  ungroup() %>% 
+  group_by(DateRecover) %>% 
+  mutate(recovered = n()) %>% 
+  # remove NA 
+  mutate(recovered = ifelse(recovered %in% 228796,
+                            yes = NA,
+                            no = recovered))
+
+
+# daily deaths
+case_info_clean <- case_info_clean %>% 
+  ungroup() %>% 
+  group_by(DateDied) %>% 
+  mutate(deaths = n()) %>% 
+  # remove NA 
+  mutate(deaths = ifelse(deaths %in% 271554,
+                         yes = NA,
+                         no = deaths)) %>% 
+  ungroup()
+
+```
+
+```{r wrangle-plot1}
+# fill in missing dates
+case_info_clean1 <- case_info_clean %>% 
+  tidyr::complete(DateRepConf = seq.Date(from = min(DateRepConf),
+                           to = max(DateRepConf),
+                           by = "day"))
+
+case_info_clean1 <- case_info_clean1 %>% 
+  distinct(DateRepConf, .keep_all = TRUE) %>% 
+  pivot_longer(cols = cases:deaths,
+               names_to = "type",
+               values_to = "count") %>% 
+  mutate(count = ifelse(test = is.na(count),
+                        yes = 0,
+                        no = count))
+
+case_info_clean1 <- case_info_clean1 %>%
+  group_by(RegionRes, type) %>%
+  mutate(cum_count = cumsum(count))
+
+# rename variables
+case_info_clean1 <- case_info_clean1 %>% 
+  rename(Date = DateRepConf,
+         Region = RegionRes)
+```
+
+```{r}
+case_info_ct <- highlight_key(case_info_clean)
+
+# cases plot
+p1 <-  ggplot(case_info_clean) +
+  geom_line(aes(x = Date,
+               y = cum_count,
+               group = Region,
+               colour = Region)) +
+  scale_x_date(date_breaks = "1 month",
+               date_minor_breaks = "2 week",
+               date_labels = format("%b")) +
+  labs(x = "Date") +
+  facet_wrap(~type) +
+  guides(colour = FALSE)
+```
+
+```{r}
+crosstalk::bscols(ggplotly(p1) %>% 
+                    # remove display bar and zoom feature
+                    config(displayModeBar = F) %>% 
+                    layout(xaxis = list(fixedrange = TRUE),
+                           yaxis = list(fixedrange = TRUE)))
+```
+
+```{r case-plot}
+ui_controls <- bscols(
+  filter_select("id", "Select a Region", case_info_ct, ~Region),
+  ggplotly(p1) %>% hide_legend(),
+  widths = c(10, 10)
+)
+
+bscols(ui_controls)
+```
+
+
+# Demographics 
+```{r}
+# replace NA values in AgeGroup; to unknown
+dem_info <- case_info_clean %>% 
+  mutate(AgeGroup = replace_na(AgeGroup, "Unknown"))
+
+dem_info$AgeGroup <- factor(dem_info$AgeGroup,
+                                   levels = c("0 to 4", 
+                                              "5 to 9",
+                                              "10 to 14",
+                                              "15 to 19",
+                                              "20 to 24",
+                                              "25 to 29",
+                                              "30 to 34",
+                                              "35 to 39",
+                                              "40 to 44",
+                                              "45 to 49",
+                                              "50 to 54",
+                                              "55 to 59",
+                                              "60 to 64",
+                                              "65 to 69",
+                                              "70 to 74",
+                                              "75 to 79",
+                                              "80+",
+                                              "Unknown"))
+
+# cases 
+dem_cases <- dem_info %>% 
+  ungroup() %>% 
+  group_by(AgeGroup, Sex) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(type = "cases")
+
+# deaths
+dem_deaths <- dem_info %>% 
+  group_by(AgeGroup, Sex) %>% 
+  filter(RemovalType == "DIED") %>% 
+  count() %>% 
+  mutate(type = "deaths")
+
+# recovered
+dem_recovered <- dem_info %>% 
+  group_by(AgeGroup, Sex) %>% 
+  filter(RemovalType == "RECOVERED") %>% 
+  count() %>% 
+  mutate(type = "recovered")
+  
+
+# combine rows
+dem <- rbind(dem_cases, dem_deaths, dem_recovered) %>% 
+  ungroup() %>% 
+  group_by(type) %>% 
+  mutate(total = sum(n)) %>% 
+  ungroup() %>% 
+  rowwise() %>% 
+  # Age Group & sex % in each type (cases// deaths// recovered)
+  mutate(pct = n/total)
+  
+
+# specify colours
+dem_plot_col <- c("#bf5d8c", "#0037b4")
+  
+dem_plot <- dem %>% 
+  ggplot() +
+  geom_col(aes(x = AgeGroup,
+               y = pct,
+               fill = Sex,
+               label = n,
+               text = paste('</br> Age Group:', AgeGroup,
+                            '</br> Percentage:', scales::percent(dem$pct,
+                                                                 accuracy = 0.01),
+                            '</br> Absolute Number:', n),
+               position = "dodge")) +
+  scale_fill_manual(values = dem_plot_col) +
+  coord_flip() + 
+  facet_wrap(~type, 
+             ncol = 3,
+             scales = "free_x") +
+  labs(x = "AgeGroup",
+       y = "percent")
+
+ggplotly(dem_plot, 
+         tooltip = c("text"))
+```
+
+
+
+
+
+
+
+
+
+

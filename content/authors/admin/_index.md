@@ -1,5 +1,5 @@
 ---
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My interest includes data analysis, and telling data stories.
 education:
   courses:
   - course: BComm
