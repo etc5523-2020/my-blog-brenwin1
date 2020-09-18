@@ -163,7 +163,7 @@ p1_cases <- case_info_clean1 %>%
   annotate(geom = "label",
            x = as.Date("2020-08-14", "%Y-%m-%d"),
            y = 7500,
-           label = "renew strict lockdown") 
+           label = "renew strict lockdown") +
   theme_ph +
   theme(panel.grid.minor = element_blank(),
         panel.grid.major.x = element_blank()) 
