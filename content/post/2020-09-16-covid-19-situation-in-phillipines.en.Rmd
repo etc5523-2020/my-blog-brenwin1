@@ -235,7 +235,11 @@ p1 <-  ggplot(case_info_ct) +
   guides(colour = FALSE) +
   colorspace::scale_color_discrete_qualitative(palette = "Dark 2") +
   theme_ph +
-  theme(plot.title.position = "plot") 
+  theme(plot.title.position = "plot",
+        panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank(),
+        axis.text.x = element_text(angle = 90)) 
+  
 ```
 
 ```{r region-plot}
