@@ -163,7 +163,7 @@ p1_cases <- case_info_clean1 %>%
   annotate(geom = "label",
            x = as.Date("2020-08-14", "%Y-%m-%d"),
            y = 7500,
-           label = "renew strict lockdown") +
+           label = "renew strict lockdown") 
   theme_ph +
   theme(panel.grid.minor = element_blank(),
         panel.grid.major.x = element_blank()) 
@@ -178,7 +178,6 @@ p2_deaths <- case_info_clean1 %>%
                 y = count),
             colour = "#f50a0a") +
   labs(tags = "deaths") +
-  ggtitle("deaths") +
   scale_x_date(date_breaks = "1 month",
                date_minor_breaks = "2 week",
                date_labels = format("%b")) +
@@ -196,7 +195,6 @@ p3_recovered <- case_info_clean1 %>%
                 y = count),
             colour = "#f5f50a") +
   labs(tags = "recovered") +
-  ggtitle("Recovered") +
   scale_x_date(date_breaks = "1 month",
                date_minor_breaks = "2 week",
                date_labels = format("%b")) +
