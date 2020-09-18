@@ -25,17 +25,28 @@ library(tidyverse)
 library(plotly)
 library(crosstalk)
 library(lubridate)
+library(scales)
 ```
 
 # Overview of Coronavirus cases in the world's most stringent lockdown country
 ```{r readin-data}
-case_info <- read_csv("data/case-info.csv")
 
-daily_report <- read_csv("data/daily-report.csv")
+#--- save data sets to binary formats 
+# case_info <- read_csv("data/case-info.csv")
+# save(case_info, file = "data/case_info.rda")
+
+# daily_report <- read_csv("data/daily-report.csv")
+# save(daily_report, file = "data/daily_report.rda")
+
+# load in R
+load("data/case_info.rda") 
+load ("data/daily_report.rda")
 
 testing_agg <- read_csv("data/testing-aggregates.csv")
 
 base_data <- read_csv("data/base-data.csv")
+
+
 ```
 
 ```{r case-info-wrangling}
@@ -99,10 +110,10 @@ case_info_clean1 <- case_info_clean1 %>%
 ```
 
 ```{r}
-case_info_ct <- highlight_key(case_info_clean)
+case_info_ct <- highlight_key(case_info_clean1)
 
 # cases plot
-p1 <-  ggplot(case_info_clean) +
+p1 <-  ggplot(case_info_clean1) +
   geom_line(aes(x = Date,
                y = cum_count,
                group = Region,
@@ -135,7 +146,7 @@ bscols(ui_controls)
 
 
 # Demographics 
-```{r}
+```{r dem-plot}
 # replace NA values in AgeGroup; to unknown
 dem_info <- case_info_clean %>% 
   mutate(AgeGroup = replace_na(AgeGroup, "Unknown"))
@@ -207,17 +218,53 @@ dem_plot <- dem %>%
                             '</br> Percentage:', scales::percent(dem$pct,
                                                                  accuracy = 0.01),
                             '</br> Absolute Number:', n),
-               position = "dodge")) +
+               position = "dodge",
+               stat = "identity")) +
   scale_fill_manual(values = dem_plot_col) +
   coord_flip() + 
   facet_wrap(~type, 
              ncol = 3,
              scales = "free_x") +
   labs(x = "AgeGroup",
-       y = "percent")
+       y = "percent") +
+  theme_bw()
 
 ggplotly(dem_plot, 
          tooltip = c("text"))
+```
+
+# Testing Rates
+```{r, include = FALSE}
+unique(testing_agg$facility_name)
+```
+- 118 testing facilities
+
+```{r}
+test_plot_col <- c("#0037b4", "#bf5d8c")
+
+# testing per day
+testing_agg %>% 
+  group_by(report_date) %>% 
+  summarize(daily_tests = sum(daily_output_samples_tested, na.rm = TRUE),
+         positive = sum(daily_output_positive_individuals, na.rm = TRUE)) %>% 
+  pivot_longer(cols = daily_tests:positive,
+               names_to = "test_results",
+               values_to = "values") %>% 
+  ggplot(aes(x = report_date,
+             y = values,
+             fill = test_results)) +
+  scale_fill_manual(values = test_plot_col) +
+  geom_col() +
+  labs(x = "Report Date",
+       y = "Individuals Sampled") 
+
+positive_rate_plot same colour red
+  
+  
+  
+
+
+
 ```
 
 
