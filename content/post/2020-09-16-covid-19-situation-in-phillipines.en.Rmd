@@ -427,7 +427,8 @@ hos1 <- tribble(~type, ~vacancy, ~number,
   coord_flip() +
   ggtitle("Hospital Beds Occupancy") +
   theme_ph +
-  theme(panel.grid.minor = element_blank()) 
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.minor.x = element_blank())
 
 hos1_ply <- ggplotly(hos1)
 
@@ -442,7 +443,8 @@ hos2 <- tribble(~type, ~availability, ~number,
   coord_flip() +
   ggtitle("Availability of equipment") +
   theme_ph +
-  theme(panel.grid.minor = element_blank()) 
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.minor.x = element_blank()) 
 
 hos2_ply <- ggplotly(hos2)
 
@@ -454,11 +456,13 @@ hos3 <- tribble(~type, ~number,
   geom_col(aes(x = fct_reorder(type,number),
                y = number,
                fill = number)) +
+  ylab("type") +
   colorspace::scale_fill_continuous_qualitative(palette = "Cold") +
   coord_flip() +
   ggtitle("Hospital Occupancy Rate level") +
   theme_ph + 
-  theme(panel.grid.minor = element_blank()) +
+  theme(panel.grid.major.y = element_blank(),
+        panel.grid.minor.x = element_blank()) +
   guides(fill = FALSE) 
 
 hos3_ply <- ggplotly(hos3)
@@ -468,7 +472,7 @@ hos3_ply <- ggplotly(hos3)
 ```
 
 ```{r}
-plotly::subplot(hos3_ply, hos1_ply)
+plotly::subplot(hos3_ply, hos1_ply, margin = 0.09)
 ```
 
 ```{r}
@@ -479,7 +483,7 @@ In terms of hospital capacity and availability of equipment exclusively for Covi
 
 Therefore, considering the number of new cases are slowly decreasing it may not be a bad idea to start gradually easing the restrictions. 
 
-
+# References
 
 
 
