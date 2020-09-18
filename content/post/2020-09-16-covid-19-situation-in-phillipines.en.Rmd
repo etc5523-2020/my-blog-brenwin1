@@ -16,6 +16,8 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+bibliography: [reference.bib]
+link-citations: true
 ---
 
 ```{r setup, include = FALSE}
@@ -29,6 +31,9 @@ library(colorspace)
 library(scales)
 library(patchwork)
 ```
+
+# About Data
+Data set was retrieved from Department of Health in Phillipines (@DOH). It is a very comprehensive data set which includes case information, hospital reports and quarantine facilities report among others.  
 
 # Overview of Coronavirus cases in the world's most stringent lockdown country
 
@@ -197,7 +202,7 @@ p1_cases / (p2_deaths + p3_recovered) +
   patchwork::plot_layout(widths = c(3,3,3))
 ```
 
-The first case of coronavirus in Philippines was recorded on 30th January 2020. Philippines was the first country outside of China to record a confirmed death from the virus (@nytimes). They did not see another case for a month before it met its first local transmission on March 7 as reported on @cnnphi. 
+The first case of coronavirus in Philippines was recorded on 30th January 2020. Philippines was the first country outside of China to record a confirmed death from the virus (@nytimes). They did not see another case for a month before it met its first local transmission on March 7 as reported on @phcnn. 
 
 Since then, the virus has been spread to every region around Phillipines. (you might want to play around with interactive region plot below!). With a surge in cases, in about 10 days, what has been touted the "strictest coronavirus lockdown in the world" was enforced. With the President ordering to "shoot dead" whoever who defied the lockdown; emulating Philippines tactics in the drug war Philippines was still recovering from. (@cbsnews) Involving house to house visits, a mandated 8pm-5am curfew extending to over 60million people, deploying army and police to man checkpoints.(@lowly-inst). 
 
@@ -245,9 +250,9 @@ Despite the strict lockdown, we see an exponential rise in cases. In many articl
 
 Between March 17 & July 25 a baffling 76,000 arrests were made. The pandemic had devastating effects espcially on the poor- exposing the gaping inequalities in access to food, water and shelter. (@cbsnews) With the data, it was found that most of these communities were actually in the city regions such as ROF and Metro Manila(`NCR`)   
 
-# Rising cases of coronavirus. Is lockdown the issue?
+# Rising cases of coronavirus. Is easing restrictions going to be the best way forward?
 
-Initially, there was a call from senior doctors to imposing a stricter lockdown in Manila- a much needed "timeout" for the overwhelming hospitals.     
+Philippines is currently contemplating easing its restrictions. Initially, there was a call from senior doctors to imposing a stricter lockdown in Manila- a much needed "timeout" for the overwhelming hospitals. We now look at its current state of capaci 
 
 ```{r dem-plot}
 # replace NA values in AgeGroup; to unknown
@@ -337,7 +342,7 @@ ggplotly(dem_plot,
          tooltip = c("text"))
 ```
 
-The demographics of the cases as a whole. While most cases were in the middle-aged, we see majority of the deaths were coming from 60+ population. No stark difference is seen in males and females.
+The interactive plot above shows demographics of cases as a whole. While most cases were in the middle-aged, we see majority of the deaths were coming from 60+ population. No stark difference is seen in males and females.
 
 ```{r}
 test_plot_col <- c("#0037b4", "#bf5d8c")
@@ -390,9 +395,9 @@ plotly::subplot(test_bar, test_rate_line,
                 margin = 0.10)
 ```
 
-A rising amount of testing were conducted from 118 testing facilities now in place. The positivity in testing results shows an undulating trend but within a 5% to 15% trend and seems to be on its way down.
+A rising amount of testing were conducted from 118 testing facilities now in place. The positivity in testing results shows an undulating trend but within a 5% to 15% trend and seems to be on its way down. An easing of restrictions might or might bring them back to its original state. 
 
-```{r hospital}
+```{r hospital, include = FALSE}
 # https://www.doh.gov.ph/2019-nCov
 
 # availability of beds
@@ -409,7 +414,11 @@ hos1 <- tribble(~type, ~vacancy, ~number,
                fill = vacancy)) +
   scale_fill_manual(values = c("#bf5d8c", "#0037b4")) +
   coord_flip() +
-  theme_ph
+  ggtitle("Hospital Beds Occupancy") +
+  theme_ph +
+  theme(panel.grid.minor = element_blank()) 
+
+hos1_ply <- ggplotly(hos1)
 
 hos2 <- tribble(~type, ~availability, ~number,
         "Mechanical ventilators", "occupied", 586,
@@ -422,7 +431,9 @@ hos2 <- tribble(~type, ~availability, ~number,
   coord_flip() +
   ggtitle("Availability of equipment") +
   theme_ph +
-  theme(panel.grid.minor = element_blank())
+  theme(panel.grid.minor = element_blank()) 
+
+hos2_ply <- ggplotly(hos2)
 
 hos3 <- tribble(~type, ~number,
         "Safe(<30% occupied)", 1025,
@@ -435,16 +446,25 @@ hos3 <- tribble(~type, ~number,
   colorspace::scale_fill_continuous_qualitative(palette = "Cold") +
   coord_flip() +
   ggtitle("Hospital Occupancy Rate level") +
-  theme_ph 
+  theme_ph + 
+  theme(panel.grid.minor = element_blank()) +
+  guides(fill = FALSE) 
 
-hos1 + hos2 + hos3 +
+hos3_ply <- ggplotly(hos3)
+
+(hos1 + hos3) / hos2 +
   plot_layout()
-
-
-
 ```
 
+```{r}
+plotly::subplot(hos3_ply, hos1_ply)
+```
 
+```{r}
+hos2_ply
+```
+
+Lastly, looking at its hospital capacity and availability of equipment exclusively for Covid-19 patients (data source: @DOH). Also considering the number of new cases are slowly decreasing it may not be a bad idea to start gradually easing the restrictions. 
 
 
 
