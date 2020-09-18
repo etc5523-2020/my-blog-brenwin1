@@ -166,7 +166,9 @@ p1_cases <- case_info_clean1 %>%
            label = "renew strict lockdown") +
   theme_ph +
   theme(panel.grid.minor = element_blank(),
-        panel.grid.major.x = element_blank())
+        panel.grid.major.x = element_blank()) 
+
+p1_cases_ply <- ggplotly(p1_cases)
 
 # deaths
 p2_deaths <- case_info_clean1 %>% 
@@ -176,12 +178,15 @@ p2_deaths <- case_info_clean1 %>%
                 y = count),
             colour = "#f50a0a") +
   labs(tags = "deaths") +
+  ggtitle("deaths") +
   scale_x_date(date_breaks = "1 month",
                date_minor_breaks = "2 week",
                date_labels = format("%b")) +
   theme_ph +
   theme(panel.grid.minor = element_blank(),
         panel.grid.major.x = element_blank())
+
+p2_deaths_ply <- ggplotly(p2_deaths)
 
 # recovered
 p3_recovered <- case_info_clean1 %>% 
@@ -191,6 +196,7 @@ p3_recovered <- case_info_clean1 %>%
                 y = count),
             colour = "#f5f50a") +
   labs(tags = "recovered") +
+  ggtitle("Recovered") +
   scale_x_date(date_breaks = "1 month",
                date_minor_breaks = "2 week",
                date_labels = format("%b")) +
@@ -198,13 +204,15 @@ p3_recovered <- case_info_clean1 %>%
   theme(panel.grid.minor = element_blank(),
         panel.grid.major.x = element_blank())
 
+p3_recovered_ply <- ggplotly(p3_recovered)
+
 p1_cases / (p2_deaths + p3_recovered) + 
   patchwork::plot_layout(widths = c(3,3,3))
 ```
 
 The first case of coronavirus in Philippines was recorded on 30th January 2020. Philippines was the first country outside of China to record a confirmed death from the virus (@nytimes). They did not see another case for a month before it met its first local transmission on March 7 as reported on @phcnn. 
 
-Since then, the virus has been spread to every region around Phillipines. (you might want to play around with interactive region plot below!). With a surge in cases, in about 10 days, what has been touted the "strictest coronavirus lockdown in the world" was enforced. With the President ordering to "shoot dead" whoever who defied the lockdown; emulating Philippines tactics in the drug war Philippines was still recovering from. (@cbsnews) Involving house to house visits, a mandated 8pm-5am curfew extending to over 60million people, deploying army and police to man checkpoints.(@lowly-inst). 
+Since then, the virus has been spread to every region around Phillipines. (you might want to play around with interactive region plot below!). With a surge in cases, in about 10 days, what has been touted the "strictest coronavirus lockdown in the world" was enforced. With the President ordered to "shoot dead" whoever who defied the lockdown; emulating Philippines tactics in the drug war Philippines was still recovering from. (@cbsnews) Involving house to house visits, a mandated 8pm-5am curfew extending to over 60million people, deploying army and police to man checkpoints.(@lowly-inst). 
 
 ```{r region-plot-wrangle}
 theme_ph <- theme_ph +
@@ -245,14 +253,15 @@ ui_controls <- bscols(
 
 bscols(ui_controls)
 ```
-
+  
+  
 Despite the strict lockdown, we see an exponential rise in cases. In many articles, the socio-economic status has been associated with the prevalence of the covid-19 cases. (@lowly-inst) It even prompted UN (& partners) towards a $5.4 million Covid-19 response plan to aid poor & marginilized community- one of the largest humanitarian aid since Typhoon Haiyan/Yolanda. (@un-plan)
 
-Between March 17 & July 25 a baffling 76,000 arrests were made. The pandemic had devastating effects espcially on the poor- exposing the gaping inequalities in access to food, water and shelter. (@cbsnews) With the data, it was found that most of these communities were actually in the city regions such as ROF and Metro Manila(`NCR`)   
+Between March 17 & July 25 a baffling 76,000 arrests were made. The pandemic had devastating effects espcially on the poor- exposing the gaping inequalities in access to food, water and shelter. (@cbsnews) With the data, it was found that most of these communities were actually in the city regions such as ROF and Metro Manila(NCR)   
 
 # Rising cases of coronavirus. Is easing restrictions going to be the best way forward?
 
-Philippines is currently contemplating easing its restrictions. Initially, there was a call from senior doctors to imposing a stricter lockdown in Manila- a much needed "timeout" for the overwhelming hospitals. We now look at its current state of capaci 
+Philippines is currently contemplating easing its restrictions despite having the highest number of cases in South-East Asia. (@st). Initially, there was a call from senior doctors to imposing a stricter lockdown in Manila- a much needed "timeout" for the overwhelming hospitals. (@guardian) Data below examines the demographics and current state of capacity. 
 
 ```{r dem-plot}
 # replace NA values in AgeGroup; to unknown
@@ -464,7 +473,9 @@ plotly::subplot(hos3_ply, hos1_ply)
 hos2_ply
 ```
 
-Lastly, looking at its hospital capacity and availability of equipment exclusively for Covid-19 patients (data source: @DOH). Also considering the number of new cases are slowly decreasing it may not be a bad idea to start gradually easing the restrictions. 
+In terms of hospital capacity and availability of equipment exclusively for Covid-19 patients (from @DOH). 
+
+Therefore, considering the number of new cases are slowly decreasing it may not be a bad idea to start gradually easing the restrictions. 
 
 
 
