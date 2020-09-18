@@ -25,12 +25,14 @@ library(tidyverse)
 library(plotly)
 library(crosstalk)
 library(lubridate)
+library(colorspace)
 library(scales)
+library(patchwork)
 ```
 
 # Overview of Coronavirus cases in the world's most stringent lockdown country
-```{r readin-data}
 
+```{r readin-data}
 #--- save data sets to binary formats 
 # case_info <- read_csv("data/case-info.csv")
 # save(case_info, file = "data/case_info.rda")
@@ -45,8 +47,6 @@ load ("data/daily_report.rda")
 testing_agg <- read_csv("data/testing-aggregates.csv")
 
 base_data <- read_csv("data/base-data.csv")
-
-
 ```
 
 ```{r case-info-wrangling}
@@ -109,11 +109,105 @@ case_info_clean1 <- case_info_clean1 %>%
          Region = RegionRes)
 ```
 
-```{r}
+```{r overall-plot}
+color_ph <- c("#0a0af5", # blue
+           "#f50a0a", # red
+           "#f5f50a") # yellow
+
+theme_ph <- theme(
+  #background & panels
+  plot.background = element_rect(fill = "#87adf1"),
+  panel.background = element_rect(fill = "#87adf1"),
+  # customize facet strip
+  strip.background = element_rect(fill = "#87adf1"),
+  strip.text.x = element_text(size = 14, colour = "white"),
+  
+  # customize plot title
+  plot.title = element_text(size = 22, face = "bold", colour = "white"),
+  
+  # axes title and tick labels
+  axis.title.y = element_text(colour = "white", size = 13),
+  axis.title.x = element_text(colour = "white", size = 13),
+  axis.text = element_text(colour = "white", size = 11)
+)
+
+
+# cases
+p1_cases <- case_info_clean1 %>% 
+  filter(type == "cases") %>% 
+  ggplot() +
+  geom_line(aes(x = Date,
+                y = count),
+            colour = "#0a0af5") +
+  labs(tags = "cases") +
+  scale_x_date(date_breaks = "1 month",
+               date_minor_breaks = "2 week",
+               date_labels = format("%b")) +
+  annotate(geom = "label",
+           x = as.Date("2020-01-30", "%Y-%m-%d"),
+           y = 800,
+           label = "first case") +
+  annotate(geom = "label",
+           x = as.Date("2020-03-17", "%Y-%m-%d"),
+           y = 800,
+           label = "lockdown begins") +
+  annotate(geom = "label",
+           x = as.Date("2020-06-01", "%Y-%m-%d"),
+           y = 1500,
+           label = "restrictions eased") +
+  annotate(geom = "label",
+           x = as.Date("2020-08-14", "%Y-%m-%d"),
+           y = 7500,
+           label = "renew strict lockdown") +
+  theme_ph +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank())
+
+# deaths
+p2_deaths <- case_info_clean1 %>% 
+  filter(type == "deaths") %>% 
+  ggplot() +
+  geom_line(aes(x = Date,
+                y = count),
+            colour = "#f50a0a") +
+  labs(tags = "deaths") +
+  scale_x_date(date_breaks = "1 month",
+               date_minor_breaks = "2 week",
+               date_labels = format("%b")) +
+  theme_ph +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank())
+
+# recovered
+p3_recovered <- case_info_clean1 %>% 
+  filter(type == "recovered") %>% 
+  ggplot() +
+  geom_line(aes(x = Date,
+                y = count),
+            colour = "#f5f50a") +
+  labs(tags = "recovered") +
+  scale_x_date(date_breaks = "1 month",
+               date_minor_breaks = "2 week",
+               date_labels = format("%b")) +
+  theme_ph +
+  theme(panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank())
+
+p1_cases / (p2_deaths + p3_recovered) + 
+  patchwork::plot_layout(widths = c(3,3,3))
+```
+
+The first case of coronavirus in Philippines was recorded on 30th January 2020. Philippines was the first country outside of China to record a confirmed death from the virus (@nytimes). They did not see another case for a month before it met its first local transmission on March 7 as reported on @cnnphi. 
+
+Since then, the virus has been spread to every region around Phillipines. (you might want to play around with interactive region plot below!). With a surge in cases, in about 10 days, what has been touted the "strictest coronavirus lockdown in the world" was enforced. With the President ordering to "shoot dead" whoever who defied the lockdown; emulating Philippines tactics in the drug war Philippines was still recovering from. (@cbsnews) Involving house to house visits, a mandated 8pm-5am curfew extending to over 60million people, deploying army and police to man checkpoints.(@lowly-inst). 
+
+```{r region-plot-wrangle}
+theme_ph <- theme_ph +
+  theme(legend.background = element_rect(fill = "#87adf1"))
 case_info_ct <- highlight_key(case_info_clean1)
 
 # cases plot
-p1 <-  ggplot(case_info_clean1) +
+p1 <-  ggplot(case_info_ct) +
   geom_line(aes(x = Date,
                y = cum_count,
                group = Region,
@@ -121,31 +215,40 @@ p1 <-  ggplot(case_info_clean1) +
   scale_x_date(date_breaks = "1 month",
                date_minor_breaks = "2 week",
                date_labels = format("%b")) +
-  labs(x = "Date") +
+  labs(x = "Date",
+       y = "Cumulative Count",
+       title = "Region Cumulative") +
   facet_wrap(~type) +
-  guides(colour = FALSE)
+  guides(colour = FALSE) +
+  colorspace::scale_color_discrete_qualitative(palette = "Dark 2") +
+  theme_ph +
+  theme(plot.title.position = "plot") 
 ```
 
-```{r}
-crosstalk::bscols(ggplotly(p1) %>% 
-                    # remove display bar and zoom feature
-                    config(displayModeBar = F) %>% 
-                    layout(xaxis = list(fixedrange = TRUE),
-                           yaxis = list(fixedrange = TRUE)))
-```
-
-```{r case-plot}
+```{r region-plot}
 ui_controls <- bscols(
   filter_select("id", "Select a Region", case_info_ct, ~Region),
-  ggplotly(p1) %>% hide_legend(),
+  ggplotly(p1) %>% 
+    layout(xaxis = list(automargin = TRUE),
+           yaxis = list(automargin = TRUE)) %>% 
+    config(displayModeBar = F) %>% 
+                    layout(xaxis = list(fixedrange = TRUE),
+                           yaxis = list(fixedrange = TRUE)) %>% 
+    hide_legend(),
   widths = c(10, 10)
 )
 
 bscols(ui_controls)
 ```
 
+Despite the strict lockdown, we see an exponential rise in cases. In many articles, the socio-economic status has been associated with the prevalence of the covid-19 cases. (@lowly-inst) It even prompted UN (& partners) towards a $5.4 million Covid-19 response plan to aid poor & marginilized community- one of the largest humanitarian aid since Typhoon Haiyan/Yolanda. (@un-plan)
 
-# Demographics 
+Between March 17 & July 25 a baffling 76,000 arrests were made. The pandemic had devastating effects espcially on the poor- exposing the gaping inequalities in access to food, water and shelter. (@cbsnews) With the data, it was found that most of these communities were actually in the city regions such as ROF and Metro Manila(`NCR`)   
+
+# Rising cases of coronavirus. Is lockdown the issue?
+
+Initially, there was a call from senior doctors to imposing a stricter lockdown in Manila- a much needed "timeout" for the overwhelming hospitals.     
+
 ```{r dem-plot}
 # replace NA values in AgeGroup; to unknown
 dem_info <- case_info_clean %>% 
@@ -227,48 +330,119 @@ dem_plot <- dem %>%
              scales = "free_x") +
   labs(x = "AgeGroup",
        y = "percent") +
-  theme_bw()
+  theme_ph 
+  
 
 ggplotly(dem_plot, 
          tooltip = c("text"))
 ```
 
-# Testing Rates
-```{r, include = FALSE}
-unique(testing_agg$facility_name)
-```
-- 118 testing facilities
+The demographics of the cases as a whole. While most cases were in the middle-aged, we see majority of the deaths were coming from 60+ population. No stark difference is seen in males and females.
 
 ```{r}
 test_plot_col <- c("#0037b4", "#bf5d8c")
 
 # testing per day
-testing_agg %>% 
+testing_clean <- testing_agg %>% 
   group_by(report_date) %>% 
   summarize(daily_tests = sum(daily_output_samples_tested, na.rm = TRUE),
          positive = sum(daily_output_positive_individuals, na.rm = TRUE)) %>% 
   pivot_longer(cols = daily_tests:positive,
                names_to = "test_results",
-               values_to = "values") %>% 
+               values_to = "values") 
+
+test_bar <- testing_clean %>% 
   ggplot(aes(x = report_date,
              y = values,
              fill = test_results)) +
   scale_fill_manual(values = test_plot_col) +
   geom_col() +
   labs(x = "Report Date",
-       y = "Individuals Sampled") 
+       y = "Individuals Sampled",
+       tag = "Daily Samples Tested") +
+  theme_ph
 
-positive_rate_plot same colour red
+test_rate_line <- testing_clean %>% 
+  pivot_wider(names_from = test_results,
+              values_from = values) %>% 
+  mutate(daily_postv_rate = positive/daily_tests) %>% 
+  ggplot() +
+  geom_line(aes(x = report_date,
+                y = daily_postv_rate),
+            colour = "#bf5d8c") +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_date(date_breaks = "1 month",
+               date_minor_breaks = "2 week",
+               date_labels = format("%b")) +
+  labs(x = "Date",
+       y = "daily positive rate",
+       tag = "Daily Positive Rate") +
+  theme_ph
+
+p1_test <- ggplotly(test_bar) %>% 
+  layout(title = "Daily Samples Tested")
   
-  
-  
+
+p2_test <- ggplotly(test_rate_line)
+
+plotly::subplot(test_bar, test_rate_line,
+                shareX = TRUE,
+                margin = 0.10)
+```
+
+A rising amount of testing were conducted from 118 testing facilities now in place. The positivity in testing results shows an undulating trend but within a 5% to 15% trend and seems to be on its way down.
+
+```{r hospital}
+# https://www.doh.gov.ph/2019-nCov
+
+# availability of beds
+hos1 <- tribble(~type, ~vacancy, ~number,
+        "ICU Beds", "vacant", 1025,
+        "ICU Beds", "occupied", 881,
+        "Isolation Beds", "vacant", 7650,
+        "Isolation Beds", "occupied", 6186,
+        "Ward Beds", "occupied", 2640,
+        "Ward Beds", "vacant", 3140) %>% 
+  ggplot() +
+  geom_col(aes(x = type,
+               y = number,
+               fill = vacancy)) +
+  scale_fill_manual(values = c("#bf5d8c", "#0037b4")) +
+  coord_flip() +
+  theme_ph
+
+hos2 <- tribble(~type, ~availability, ~number,
+        "Mechanical ventilators", "occupied", 586,
+        "Mechanical ventilators", "vacant", 1616) %>% 
+  ggplot() +
+  geom_col(aes(x = type,
+               y = number,
+               fill = availability)) +
+  scale_fill_manual(values = c("#bf5d8c", "#0037b4")) +
+  coord_flip() +
+  ggtitle("Availability of equipment") +
+  theme_ph +
+  theme(panel.grid.minor = element_blank())
+
+hos3 <- tribble(~type, ~number,
+        "Safe(<30% occupied)", 1025,
+        "Warning (30% to 70%)", 294,
+        "Danger(>70%)", 239) %>% 
+  ggplot() +
+  geom_col(aes(x = fct_reorder(type,number),
+               y = number,
+               fill = number)) +
+  colorspace::scale_fill_continuous_qualitative(palette = "Cold") +
+  coord_flip() +
+  ggtitle("Hospital Occupancy Rate level") +
+  theme_ph 
+
+hos1 + hos2 + hos3 +
+  plot_layout()
 
 
 
 ```
-
-
-
 
 
 
