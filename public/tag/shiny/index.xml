@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shiny | Brenwin ETC5523 blog</title>
+    <link>/tag/shiny/</link>
+      <atom:link href="/tag/shiny/index.xml" rel="self" type="application/rss+xml" />
+    <description>shiny</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>shiny</title>
+      <link>/tag/shiny/</link>
+    </image>
+    
+    <item>
+      <title>Covid-19 Seasonality Shiny App </title>
+      <link>/post/covid-19-seasonality-shiny-app/</link>
+      <pubDate>Wed, 14 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/post/covid-19-seasonality-shiny-app/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;video width=&#34;720&#34; height=&#34;400&#34; controls&gt;
+&lt;source src=&#34;data/shinyguide.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;div id=&#34;about-shiny-app&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;About Shiny App&lt;/h1&gt;
+&lt;p&gt;Recently, I created a Shiny App to access the novel coronavirus’ seasonality. This app was created as part of my unit (ETC5523 Communicating with Data) assessment and also seeks to provide insights of the novel coronavirus seasonality.&lt;/p&gt;
+&lt;p&gt;The motivation of this app comes amid many speculations especially from health experts around the &lt;a href=&#34;https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html&#34;&gt;increased risk of virus spreading in colder seasons&lt;/a&gt;. Here in Melbourne, we &lt;a href=&#34;https://www.bloombergquint.com/coronavirus-outbreak/melbourne-is-living-the-cold-weather-virus-surge-experts-fear&#34;&gt;experienced virus resurgence in winter that dwarfed the 1st outbreak in March&lt;/a&gt;. As Europe eases restrictions, for the &lt;a href=&#34;https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html&#34;&gt;first time ever, they had a greater number of cases than USA&lt;/a&gt;. Besides, &lt;a href=&#34;https://www.bbc.com/news/health-53515077&#34;&gt;many respiratory viruses have a seasonality component&lt;/a&gt; that peak in winter (for example people are more prone to flu in winter) and they tend to be more active in winter.&lt;/p&gt;
+&lt;p&gt;As colder seasons migrate to the Northern hemisphere, we can take this opportunity to consolidate what we learnt from countries in the Southern Hemisphere to potentially anticipate what could happen to the countries in the Northern Hemisphere as many countries seek to reopen their economy.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;self-review&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Self-Review&lt;/h1&gt;
+&lt;div id=&#34;what-was-done-well&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What was done well&lt;/h2&gt;
+&lt;p&gt;I thought the planning phase went well. A lot of thought were put into making an app that is useful and in line with the current situation. I think this planning phase was crucial before any execution could even begin and this is where exploratory Data analysis came into play.&lt;/p&gt;
+&lt;p&gt;First, I had to look around data (luckily I have gone through some covid-19 data before -see previous blog posts) and see: what could be done &amp;amp; why. Lucky for me, I remembered stumbling upon an twitter post that showed Europe having more cases than USA for the first time *lost the post since. So it gave me the idea start with. So I read more articles about the topic and found articles relating to virus’ seasonality. Hence I thought an app that specifically examines virus’ seasonality would be useful.&lt;/p&gt;
+&lt;p&gt;Especially since being relatively new to &lt;code&gt;Shiny&lt;/code&gt;, I understood that I need to come up with an elaborate plan within my capabilities, knowledge and time frame.&lt;/p&gt;
+&lt;p&gt;Understanding that covid-19 is affected by numerous factors (not just weather), I decided to use tropical countries as the “baseline” for comparison.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-can-be-improved-feasible&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What can be improved (feasible)&lt;/h2&gt;
+&lt;p&gt;I thought the looks of the app could be improved. Even though the creative juices can be running, many of the times I need to think of its feasibility (and my capabilities).&lt;/p&gt;
+&lt;p&gt;I think the map could be improved. I would prefer a “click-to-show” instead of hovering over the points. In hindsight, using &lt;code&gt;leaflet&lt;/code&gt; map could have been a better option with its zooming in and out feature.&lt;/p&gt;
+&lt;p&gt;Furthermore, I believe that the interactive elements could be improved. For example, connecting the different plots to map or hovering over number of cases that connects to the map to show the number of countries would be neat. Animation on the map to see the different number of cases (with fill colour changing according to a metric e.g. number of cases) in a date range specified by the user would be interesting and useful to examine the covid’s seasonality.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-can-be-improved-limited&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What can be improved (limited)&lt;/h2&gt;
+&lt;p&gt;Clicking on a country on the map provides a walkthrough of latest relevant news on covid and a brief summary of its latest happenings (could be a little far fetched)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

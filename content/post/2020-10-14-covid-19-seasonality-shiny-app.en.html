@@ -1,0 +1,53 @@
+---
+title: 'Covid-19 Seasonality Shiny App '
+author: Brenwin
+date: '2020-10-14'
+slug: covid-19-seasonality-shiny-app
+categories:
+  - covid19
+tags:
+  - shiny
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-10-15T22:35:36+11:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<video width="720" height="400" controls>
+<source src="data/shinyguide.mp4" type="video/mp4">
+</video>
+<div id="about-shiny-app" class="section level1">
+<h1>About Shiny App</h1>
+<p>Recently, I created a Shiny App to access the novel coronavirus’ seasonality. This app was created as part of my unit (ETC5523 Communicating with Data) assessment and also seeks to provide insights of the novel coronavirus seasonality.</p>
+<p>The motivation of this app comes amid many speculations especially from health experts around the <a href="https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html">increased risk of virus spreading in colder seasons</a>. Here in Melbourne, we <a href="https://www.bloombergquint.com/coronavirus-outbreak/melbourne-is-living-the-cold-weather-virus-surge-experts-fear">experienced virus resurgence in winter that dwarfed the 1st outbreak in March</a>. As Europe eases restrictions, for the <a href="https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html">first time ever, they had a greater number of cases than USA</a>. Besides, <a href="https://www.bbc.com/news/health-53515077">many respiratory viruses have a seasonality component</a> that peak in winter (for example people are more prone to flu in winter) and they tend to be more active in winter.</p>
+<p>As colder seasons migrate to the Northern hemisphere, we can take this opportunity to consolidate what we learnt from countries in the Southern Hemisphere to potentially anticipate what could happen to the countries in the Northern Hemisphere as many countries seek to reopen their economy.</p>
+</div>
+<div id="self-review" class="section level1">
+<h1>Self-Review</h1>
+<div id="what-was-done-well" class="section level2">
+<h2>What was done well</h2>
+<p>I thought the planning phase went well. A lot of thought were put into making an app that is useful and in line with the current situation. I think this planning phase was crucial before any execution could even begin and this is where exploratory Data analysis came into play.</p>
+<p>First, I had to look around data (luckily I have gone through some covid-19 data before -see previous blog posts) and see: what could be done &amp; why. Lucky for me, I remembered stumbling upon an twitter post that showed Europe having more cases than USA for the first time *lost the post since. So it gave me the idea start with. So I read more articles about the topic and found articles relating to virus’ seasonality. Hence I thought an app that specifically examines virus’ seasonality would be useful.</p>
+<p>Especially since being relatively new to <code>Shiny</code>, I understood that I need to come up with an elaborate plan within my capabilities, knowledge and time frame.</p>
+<p>Understanding that covid-19 is affected by numerous factors (not just weather), I decided to use tropical countries as the “baseline” for comparison.</p>
+</div>
+<div id="what-can-be-improved-feasible" class="section level2">
+<h2>What can be improved (feasible)</h2>
+<p>I thought the looks of the app could be improved. Even though the creative juices can be running, many of the times I need to think of its feasibility (and my capabilities).</p>
+<p>I think the map could be improved. I would prefer a “click-to-show” instead of hovering over the points. In hindsight, using <code>leaflet</code> map could have been a better option with its zooming in and out feature.</p>
+<p>Furthermore, I believe that the interactive elements could be improved. For example, connecting the different plots to map or hovering over number of cases that connects to the map to show the number of countries would be neat. Animation on the map to see the different number of cases (with fill colour changing according to a metric e.g. number of cases) in a date range specified by the user would be interesting and useful to examine the covid’s seasonality.</p>
+</div>
+<div id="what-can-be-improved-limited" class="section level2">
+<h2>What can be improved (limited)</h2>
+<p>Clicking on a country on the map provides a walkthrough of latest relevant news on covid and a brief summary of its latest happenings (could be a little far fetched)</p>
+</div>
+</div>
