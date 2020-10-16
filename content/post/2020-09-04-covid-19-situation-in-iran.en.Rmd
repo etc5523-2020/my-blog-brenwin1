@@ -1,5 +1,5 @@
 ---
-title: COVID-19 Situation in Iran
+title: covid-19 Situation in Iran
 author: Brenwin
 date: '2020-09-04'
 slug: covid-19-situation-in-iran

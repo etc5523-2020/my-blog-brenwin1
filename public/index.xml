@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Brenwin ETC5523 blog</title>
+    <title>Brenwin&#39;s blog for Data Stories</title>
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    <description>Brenwin ETC5523 blog</description>
+    <description>Brenwin&#39;s blog for Data Stories</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 01 Jun 2030 13:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
-      <title>Brenwin ETC5523 blog</title>
+      <title>Brenwin&#39;s blog for Data Stories</title>
       <link>/</link>
     </image>
     
@@ -77,7 +77,7 @@
     </item>
     
     <item>
-      <title>Covid-19 Seasonality Shiny App </title>
+      <title>covid-19 Seasonality Shiny App </title>
       <link>/post/covid-19-seasonality-shiny-app/</link>
       <pubDate>Wed, 14 Oct 2020 00:00:00 +0000</pubDate>
       <guid>/post/covid-19-seasonality-shiny-app/</guid>
@@ -85,33 +85,36 @@
 &lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;video width=&#34;720&#34; height=&#34;400&#34; controls&gt;
-&lt;source src=&#34;data/shinyguide.mp4&#34; type=&#34;video/mp4&#34;&gt;
-&lt;/video&gt;
+&lt;iframe width=&#34;720&#34; height=&#34;400&#34; src=&#34;../data/shinyguide.mp4&#34; frameborder=&#34;0&#34; allowfullscreen&gt;
+&lt;/iframe&gt;
+&lt;p&gt;The github link to the app can be found &lt;a href=&#34;https://github.com/etc5523-2020/shiny-assessment-brenwin1&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 &lt;div id=&#34;about-shiny-app&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;About Shiny App&lt;/h1&gt;
-&lt;p&gt;Recently, I created a Shiny App to access the novel coronavirus’ seasonality. This app was created as part of my unit (ETC5523 Communicating with Data) assessment and also seeks to provide insights of the novel coronavirus seasonality.&lt;/p&gt;
-&lt;p&gt;The motivation of this app comes amid many speculations especially from health experts around the &lt;a href=&#34;https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html&#34;&gt;increased risk of virus spreading in colder seasons&lt;/a&gt;. Here in Melbourne, we &lt;a href=&#34;https://www.bloombergquint.com/coronavirus-outbreak/melbourne-is-living-the-cold-weather-virus-surge-experts-fear&#34;&gt;experienced virus resurgence in winter that dwarfed the 1st outbreak in March&lt;/a&gt;. As Europe eases restrictions, for the &lt;a href=&#34;https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html&#34;&gt;first time ever, they had a greater number of cases than USA&lt;/a&gt;. Besides, &lt;a href=&#34;https://www.bbc.com/news/health-53515077&#34;&gt;many respiratory viruses have a seasonality component&lt;/a&gt; that peak in winter (for example people are more prone to flu in winter) and they tend to be more active in winter.&lt;/p&gt;
+&lt;p&gt;Recently, I created a Shiny App to assess the novel coronavirus’ seasonality. This app was created as part of my unit (ETC5523 Communicating with Data) assessment but also seeks to provide insights of the novel coronavirus seasonality.&lt;/p&gt;
+&lt;p&gt;The motivation of this app comes amid many speculations especially from health experts around the &lt;a href=&#34;https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html&#34;&gt;increased risk of virus spreading in colder seasons&lt;/a&gt;. Here in Melbourne, we &lt;a href=&#34;https://www.bloombergquint.com/coronavirus-outbreak/melbourne-is-living-the-cold-weather-virus-surge-experts-fear&#34;&gt;experienced virus resurgence in winter that dwarfed the 1st outbreak in March&lt;/a&gt;. As Europe eased restrictions, for the &lt;a href=&#34;https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html&#34;&gt;first time ever, they reported higher number of cases than USA&lt;/a&gt;. Besides, &lt;a href=&#34;https://www.bbc.com/news/health-53515077&#34;&gt;many respiratory viruses have a seasonality component&lt;/a&gt; that peak in winter (for example people are more prone to flu in winter) as they tend to be more active among other reasons.&lt;/p&gt;
 &lt;p&gt;As colder seasons migrate to the Northern hemisphere, we can take this opportunity to consolidate what we learnt from countries in the Southern Hemisphere to potentially anticipate what could happen to the countries in the Northern Hemisphere as many countries seek to reopen their economy.&lt;/p&gt;
+&lt;p&gt;Confounding variables that add to the virus’ level of risk must also be taken into account. Hence tropical countries are included as “baseline” for comparison.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;self-review&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Self-Review&lt;/h1&gt;
-&lt;div id=&#34;what-was-done-well&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What was done well&lt;/h2&gt;
-&lt;p&gt;I thought the planning phase went well. A lot of thought were put into making an app that is useful and in line with the current situation. I think this planning phase was crucial before any execution could even begin and this is where exploratory Data analysis came into play.&lt;/p&gt;
-&lt;p&gt;First, I had to look around data (luckily I have gone through some covid-19 data before -see previous blog posts) and see: what could be done &amp;amp; why. Lucky for me, I remembered stumbling upon an twitter post that showed Europe having more cases than USA for the first time *lost the post since. So it gave me the idea start with. So I read more articles about the topic and found articles relating to virus’ seasonality. Hence I thought an app that specifically examines virus’ seasonality would be useful.&lt;/p&gt;
-&lt;p&gt;Especially since being relatively new to &lt;code&gt;Shiny&lt;/code&gt;, I understood that I need to come up with an elaborate plan within my capabilities, knowledge and time frame.&lt;/p&gt;
-&lt;p&gt;Understanding that covid-19 is affected by numerous factors (not just weather), I decided to use tropical countries as the “baseline” for comparison.&lt;/p&gt;
+&lt;div id=&#34;what-i-think-was-done-well&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What I think was done well&lt;/h2&gt;
+&lt;p&gt;I thought the planning phase was thorough and improved efficiency of making the app. A lot of thought was put into making an app that is useful and in line with the current situation. I think this planning phase was crucial before any execution could even begin and this is where &lt;strong&gt;exploratory Data analysis&lt;/strong&gt; came into play.&lt;/p&gt;
+&lt;p&gt;First, I had to look around data (luckily I have gone through some covid-19 data before *see previous blog posts) and asked: what could be done &amp;amp; why. Lucky for me, I remembered stumbling upon an twitter post awhile back that showed Europe having more cases than USA for the first time *unfortunately lost the post since. So it gave me the idea start with. So I read more articles about the topic and found articles relating to virus’ seasonality. Hence I thought an app that specifically examines virus’ seasonality would be useful.&lt;/p&gt;
+&lt;p&gt;Especially being relatively new to &lt;code&gt;Shiny&lt;/code&gt;, I understood that I need to come up with an elaborate plan within my capabilities, knowledge and time frame. Although I had to look through my notes and lectures, counterintuitively, I think having a sufficiently elaborate plan enabled efficiency in execution.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;what-can-be-improved-feasible&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;What can be improved (feasible)&lt;/h2&gt;
-&lt;p&gt;I thought the looks of the app could be improved. Even though the creative juices can be running, many of the times I need to think of its feasibility (and my capabilities).&lt;/p&gt;
-&lt;p&gt;I think the map could be improved. I would prefer a “click-to-show” instead of hovering over the points. In hindsight, using &lt;code&gt;leaflet&lt;/code&gt; map could have been a better option with its zooming in and out feature.&lt;/p&gt;
-&lt;p&gt;Furthermore, I believe that the interactive elements could be improved. For example, connecting the different plots to map or hovering over number of cases that connects to the map to show the number of countries would be neat. Animation on the map to see the different number of cases (with fill colour changing according to a metric e.g. number of cases) in a date range specified by the user would be interesting and useful to examine the covid’s seasonality.&lt;/p&gt;
+&lt;p&gt;I thought the interface of the app could be improved. Even though the creative juices may be running, many of the times I need to consider its feasibility(and my current capability) given the limited time.&lt;/p&gt;
+&lt;p&gt;I would say map could be improved. A “click-to-show” instead of hovering over the points may be a better user interface. In hindsight, using &lt;code&gt;leaflet&lt;/code&gt; map could have been a better option with its zooming in and out feature.&lt;/p&gt;
+&lt;p&gt;Incidentally, I was unable to deploy the app in &lt;code&gt;shinyapps.io&lt;/code&gt; as the data set was too big and free users are only entitled to instance size of 1GB. A workaround this this may be to use leaflet to significantly cull the data (by separating &lt;code&gt;world&lt;/code&gt; map data and coronavirus &lt;code&gt;data&lt;/code&gt; instead of putting them together).&lt;/p&gt;
+&lt;p&gt;Furthermore, I believe that the interactive elements could be better. For example, connecting the different plots to map by clicks. I also thought of hovering over number of cases (fill bar) interacts with the map to show the number of countries hitting that threshold would be neat. And, an animating the map to see the different number of cases (with fill colour changing according to a metric e.g. number of cases) in a date range specified by the user would be very interesting and useful to examine the covid’s seasonality. Will try to do these in the near future!&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;what-can-be-improved-limited&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What can be improved (limited)&lt;/h2&gt;
-&lt;p&gt;Clicking on a country on the map provides a walkthrough of latest relevant news on covid and a brief summary of its latest happenings (could be a little far fetched)&lt;/p&gt;
+&lt;div id=&#34;what-can-be-improved-limited-by-datatechnology&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What can be improved (limited by data/technology)&lt;/h2&gt;
+&lt;p&gt;Regarding coronavirus data on covid-19 across the world, issues around discrepancy in data collection methods and rules would cause comparability problems. For example, countries may have different testing rates, delays in reporting.&lt;/p&gt;
+&lt;p&gt;Also, the lag in loading speed might be a hindrance when it comes to doing an analysis. Increasing the internet speed would certainly improve the app’s performance.&lt;/p&gt;
+&lt;p&gt;Clicking on a country on the map provides a walkthrough of latest relevant news on covid a country and a brief summary of its latest happenings (could be a little far fetched).&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>
@@ -283,11 +286,12 @@
     </item>
     
     <item>
-      <title>COVID-19 Situation in Iran</title>
+      <title>covid-19 Situation in Iran</title>
       <link>/post/covid-19-situation-in-iran/</link>
       <pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate>
       <guid>/post/covid-19-situation-in-iran/</guid>
       <description>
+&lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/rmarkdown-libs/pymjs/pym.v1.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/rmarkdown-libs/widgetframe-binding/widgetframe.js&#34;&gt;&lt;/script&gt;
