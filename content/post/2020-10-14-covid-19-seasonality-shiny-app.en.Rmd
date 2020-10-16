@@ -13,46 +13,88 @@ image:
   caption: ''
   focal_point: ''
   preview_only: no
+bibliography: [reference.bib]
 ---
 
 <iframe width="720" height="400" src="../data/shinyguide.mp4" frameborder="0" allowfullscreen></iframe>
 
-The github link to the app can be found [here](https://github.com/etc5523-2020/shiny-assessment-brenwin1)
+THe code to the app can be found in my [github link](https://github.com/etc5523-2020/shiny-assessment-brenwin1)
 
 # About Shiny App
 Recently, I created a Shiny App to assess the novel coronavirus' seasonality. This app was created as part of my unit (ETC5523 Communicating with Data) assessment but also seeks to provide insights of the novel coronavirus seasonality.
 
-The motivation of this app comes amid many speculations especially from health experts around the [increased risk of virus spreading in colder seasons](https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html). Here in Melbourne, we [experienced virus resurgence in winter that dwarfed the 1st outbreak in March](https://www.bloombergquint.com/coronavirus-outbreak/melbourne-is-living-the-cold-weather-virus-surge-experts-fear). As Europe eased restrictions, for the [first time ever, they reported higher number of cases than USA](https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html). Besides, [many respiratory viruses have a seasonality component](https://www.bbc.com/news/health-53515077) that peak in winter (for example people are more prone to flu in winter) as they tend to be more active among other reasons.
+The motivation of this app comes amid many speculations especially from health experts around the [increased risk of virus spreading in colder seasons](https://www.washingtonpost.com/health/2020/04/21/coronavirus-secondwave-cdcdirector/). (@wash-post) Here in Melbourne, we [experienced virus resurgence in winter that dwarfed the 1st outbreak in March](https://www.bloombergquint.com/coronavirus-outbreak/melbourne-is-living-the-cold-weather-virus-surge-experts-fear). As Europe eased restrictions, for the [first time ever, they reported higher number of cases than USA](https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html). (@cnbc) Besides, [many respiratory viruses have a seasonality component](https://www.bbc.com/news/health-53515077) that peak in winter (for example people are more prone to flu in winter) as they tend to be more active among other reasons. (@bbc-winter)
 
-As colder seasons migrate to the Northern hemisphere, we can take this opportunity to consolidate what we learnt from countries in the Southern Hemisphere to potentially anticipate what could happen to the countries in the Northern Hemisphere as many countries seek to reopen their economy.    
+As colder seasons migrate to the Northern hemisphere, we take this opportunity to consolidate what we have learnt from countries in the Southern Hemisphere to potentially anticipate what could happen to the countries in the Northern Hemisphere as many countries seek to reopen their economy.    
 
 Confounding variables that add to the virus' level of risk must also be taken into account. Hence tropical countries are included as "baseline" for comparison.  
 
 # Self-Review 
 
 ## What I think was done well
-I thought the planning phase was thorough and improved efficiency of making the app. A lot of thought was put into making an app that is useful and in line with the current situation. I think this planning phase was crucial before any execution could even begin and this is where **exploratory Data analysis** came into play.
 
-First, I had to look around data (luckily I have gone through some covid-19 data before \*see previous blog posts) and asked: what could be done & why. Lucky for me, I remembered stumbling upon an twitter post awhile back that showed Europe having more cases than USA for the first time \*unfortunately lost the post since. So it gave me the idea start with. So I read more articles about the topic and found articles relating to virus' seasonality. Hence I thought an app that specifically examines virus' seasonality would be useful. 
+### Planning & Exploratory Data Analysis
+I thought the planning phase was thorough and significantly improved efficiency of making the app. A lot of thought was put into making an app that is useful and relevant with the current situation. I think the planning phase is crucial before any execution could even begin and this is where **exploratory Data analysis** came into play.
+
+First, I had to look around data (luckily I have gone through some covid-19 data before \*see previous blog posts) and asked: what could be done & what would I want to see. Lucky for me, I remembered stumbling upon a twitter post awhile back that showed Europe having more cases than USA for the first time \*unfortunately lost the post since. So it gave me the idea start with. So I looked more about the topic and read articles relating to virus' seasonality and also look at other apps out there for inspiration. Hence led me to thinking that an app that specifically examines virus' seasonality would be useful and different. 
 
 Especially being relatively new to `Shiny`, I understood that I need to come up with an elaborate plan within my capabilities, knowledge and time frame. Although I had to look through my notes and lectures, counterintuitively, I think having a sufficiently elaborate plan enabled efficiency in execution. 
 
+### Layout of the app
+Instead of the usual `fludPage` set up, `navbarPage` was used. The enabled the app's layout to be highly customisable as it allowed each `tabPanel` to exist as a page on its own
 
-## What can be improved (feasible)
+In Tab 1, `fluidRow` and `column` were employed to set aside grid space to position each of the identical elements in a neat manner. The plots were vertically aligned to facilitate comparison of countries in Tropics, Northern & Southern Hemisphere. 
 
-I thought the interface of the app could be improved. Even though the creative juices may be running, many of the times I need to consider its feasibility(and my current capability) given the limited time. 
+In Tab 2, the advantage of `navbarPage` was utilized. With a `sidebarLayout`, after the `sideBarPanel` was in place, the map can be plotted to fill the entire page in the `mainPanel`. This enabled users to view the map and its corresponding plots side by side for easy comparison.
 
-I would say map could be improved. A "click-to-show" instead of hovering over the points may be a better user interface. In hindsight, using `leaflet` map could have been a better option with its zooming in and out feature.
+Lastly, Shiny's `tags$list` was applied extensively to configure the text on the app. 
+These functions recreate `html tags` under the hood. This was useful for someone who is more
+comfortable in using R code than raw html code. After all, Shiny is a html web page.
 
-Incidentally, I was unable to deploy the app in `shinyapps.io` as the data set was too big and free users are only entitled to instance size of 1GB. A workaround this this may be to use leaflet to significantly cull the data (by separating `world` map data and coronavirus `data` instead of putting them together).
+### Functionality 
+This app was created to optimize its functionality reflected in its layout, contents and reactivity components. Comparing within country (Tab 2) provides a understand the case in hand (covid's Seasonality). It has blue shaded rectangles indicating winter months. The scales were set free as
+the main point of this tab was to compare each country's (at different hemisphere) trend in the different seasons.
 
-Furthermore, I believe that the interactive elements could be better. For example, connecting the different plots to map by clicks. I also thought of hovering over number of cases (fill bar) interacts with the map to show the number of countries hitting that threshold would be neat. And, an animating the map to see the different number of cases (with fill colour changing according to a metric e.g. number of cases) in a date range specified by the user would be very interesting and useful to examine the covid's seasonality. Will try to do these in the near future!
+In comparing across countries (Tab 3), I acknowledged that many variables come into play. 
+One of it was population. Hence, the reactivity component allowed users to toggle 
+between indicators (one of raw count and the other per 100,000 population). Again, 
+to be able to compare counts in each season, the user must be able to set a date range. Lastly,
+a `data table` was embedded including a lockdown variable as I think lockdown is a big factor
+in differentiating the case counts of countries.
+
+I would like to add that putting a "Show" `ActionButton` to update the map was useful so
+to avoid users having to load the map each time a country is added to the list.
+
+
+## What can be improved
+
+I thought the interface of the app could be improved to make the app more appealing and welcoming. Even though the creative juices may be running, many of the times I need to consider its feasibility especially given the limited time. For example, using `css` to style the web page with icons, fancier fonts etc. would be nice.
+
+I would say the map could be improved. A "click-to-show" instead of hovering over the points may be a better user interface. In hindsight, using `leaflet` map could have been a better option with its zooming in and out feature.
+
+Incidentally, I was unable to deploy the app in `shinyapps.io` as the data set was too big and free users are only entitled to instance size of 1GB. A workaround this this may be to use leaflet to significantly cull the data (by separating `world` map data and coronavirus `data` instead of putting them together). 
+
+Furthermore, I believe that the interactive elements could also be better. For example, connecting the different plots to map by clicks. I also thought of hovering over number of cases (fill bar) which interacts with the map to show the number of countries hitting that threshold would be neat.
+
+And, **animating** the map to see the different number of cases (with fill colour changing according to a metric e.g. number of cases) over time; in a date range specified by the user would be very interesting and helpful to examine the covid's seasonality. Will try to do these in the near future!
 
 ## What can be improved (limited by data/technology)
 
-Regarding coronavirus data on covid-19 across the world, issues around discrepancy in data collection methods and rules would cause comparability problems. For example, countries may have different testing rates, delays in reporting. 
+Regarding coronavirus data on covid-19 across the world, issues around discrepancy in data collection methods and rules would cause comparability problems. For example, countries may have different testing rates, delays in reporting, lockdown measures.
 
 Also, the lag in loading speed might be a hindrance when it comes to doing an analysis. Increasing the internet speed would certainly improve the app's performance.
 
 Clicking on a country on the map provides a walkthrough of latest relevant news on covid a country and a brief summary of its latest happenings (could be a little far fetched).
+
+# Software References
+All these are done using `R` software using `Hugo Blogdown` template
+
+Including these `R` packages were referenced:  
+- `Shiny`: @Rshiny  
+- `DT`: @Rdt  
+- `leaflet`: @Rleaflet  
+- `tidyverse`: @Rtidyverse
+
+
+# References
 
