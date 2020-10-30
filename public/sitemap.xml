@@ -33,37 +33,37 @@
   </url>
   
   <url>
-    <loc>/categories/</loc>
-    <lastmod>2020-10-15T22:35:36+11:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/covid-19-seasonality-shiny-app/</loc>
-    <lastmod>2020-10-15T22:35:36+11:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/category/covid19/</loc>
-    <lastmod>2020-10-15T22:35:36+11:00</lastmod>
+    <loc>/post/peer-review-r-package/</loc>
+    <lastmod>2020-10-25T16:50:06+11:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2020-10-15T22:35:36+11:00</lastmod>
+    <lastmod>2020-10-25T16:50:06+11:00</lastmod>
   </url>
   
   <url>
-    <loc>/tag/shiny/</loc>
-    <lastmod>2020-10-15T22:35:36+11:00</lastmod>
+    <loc>/tag/rpackage/</loc>
+    <lastmod>2020-10-25T16:50:06+11:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2020-10-15T22:35:36+11:00</lastmod>
+    <lastmod>2020-10-25T16:50:06+11:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2020-09-16T21:43:24+10:00</lastmod>
   </url>
   
   <url>
     <loc>/post/covid-19-situation-in-phillipines/</loc>
+    <lastmod>2020-09-16T21:43:24+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/category/covid19/</loc>
     <lastmod>2020-09-16T21:43:24+10:00</lastmod>
   </url>
   
@@ -120,16 +120,6 @@
   <url>
     <loc>/slides/example/</loc>
     <lastmod>2019-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/privacy/</loc>
-    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/terms/</loc>
-    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
   </url>
   
   <url>

@@ -77,104 +77,121 @@
     </item>
     
     <item>
-      <title>covid-19 Seasonality Shiny App </title>
-      <link>/post/covid-19-seasonality-shiny-app/</link>
-      <pubDate>Wed, 14 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>/post/covid-19-seasonality-shiny-app/</guid>
+      <title>Peer Review R-Package</title>
+      <link>/post/peer-review-r-package/</link>
+      <pubDate>Sun, 25 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/post/peer-review-r-package/</guid>
       <description>
 &lt;script src=&#34;/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/anchor-sections/anchor-sections.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/anchor-sections/anchor-sections.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;iframe width=&#34;720&#34; height=&#34;400&#34; src=&#34;../data/shinyguide.mp4&#34; frameborder=&#34;0&#34; allowfullscreen&gt;
-&lt;/iframe&gt;
-&lt;p&gt;THe code to the app can be found in my &lt;a href=&#34;https://github.com/etc5523-2020/shiny-assessment-brenwin1&#34;&gt;github link&lt;/a&gt;&lt;/p&gt;
-&lt;div id=&#34;about-shiny-app&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;About Shiny App&lt;/h1&gt;
-&lt;p&gt;Recently, I created a Shiny App to assess the novel coronavirus’ seasonality. This app was created as part of my unit (ETC5523 Communicating with Data) assessment but also seeks to provide insights of the novel coronavirus seasonality.&lt;/p&gt;
-&lt;p&gt;The motivation of this app comes amid many speculations especially from health experts around the &lt;a href=&#34;https://www.washingtonpost.com/health/2020/04/21/coronavirus-secondwave-cdcdirector/&#34;&gt;increased risk of virus spreading in colder seasons&lt;/a&gt;. (&lt;span class=&#34;citation&#34;&gt;Sun (2020)&lt;/span&gt;) Here in Melbourne, we &lt;a href=&#34;https://www.bloombergquint.com/coronavirus-outbreak/melbourne-is-living-the-cold-weather-virus-surge-experts-fear&#34;&gt;experienced virus resurgence in winter that dwarfed the 1st outbreak in March&lt;/a&gt;. As Europe eased restrictions, for the &lt;a href=&#34;https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html&#34;&gt;first time ever, they reported higher number of cases than USA&lt;/a&gt;. (&lt;span class=&#34;citation&#34;&gt;Meredith (2020)&lt;/span&gt;) Besides, &lt;a href=&#34;https://www.bbc.com/news/health-53515077&#34;&gt;many respiratory viruses have a seasonality component&lt;/a&gt; that peak in winter (for example people are more prone to flu in winter) as they tend to be more active among other reasons. (&lt;span class=&#34;citation&#34;&gt;Gallagher (2020)&lt;/span&gt;)&lt;/p&gt;
-&lt;p&gt;As colder seasons migrate to the Northern hemisphere, we take this opportunity to consolidate what we have learnt from countries in the Southern Hemisphere to potentially anticipate what could happen to the countries in the Northern Hemisphere as many countries seek to reopen their economy.&lt;/p&gt;
-&lt;p&gt;Confounding variables that add to the virus’ level of risk must also be taken into account. Hence tropical countries are included as “baseline” for comparison.&lt;/p&gt;
+&lt;p&gt;This blog post would be slightly special as it would be about peer reviewing a fellow classmate, Yiwen’s &lt;code&gt;R&lt;/code&gt;package called &lt;code&gt;COVID19bb&lt;/code&gt;(see &lt;a href=&#34;https://github.com/etc5523-2020/r-package-assessment-Yiwen-Zhang-259&#34;&gt;github link&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;I think peer reviewing is a good practice. By providing and receiving feedback (especially fresh after doing the same task), we get to learn how others solve similar problems faced and learn new perspectives &amp;amp; methods. It is also in ways a process for self reflection.&lt;/p&gt;
+&lt;div id=&#34;covid19bb-package-overview&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;&lt;code&gt;COVID19bb&lt;/code&gt; Package Overview 📦&lt;/h1&gt;
+&lt;p&gt;This package attempts to assess the global situation of the coronavirus with 3 commonly used and familiar indicators namely &lt;em&gt;cases&lt;/em&gt;, &lt;em&gt;deaths&lt;/em&gt; and &lt;em&gt;recovered&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;It comes with it an embedded &lt;code&gt;Shiny&lt;/code&gt; app with 3 tabs which shows different visualizations.&lt;/p&gt;
+&lt;div id=&#34;what-i-liked-about-it&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What I liked about it 💯&lt;/h2&gt;
+&lt;p&gt;I really enjoyed the simplicity and the ease &amp;amp; intuitiveness to get started with the package and app.
+Especially when it comes to logical flow of the app. It starts off general with a world map before going into city level summarized and daily level.&lt;/p&gt;
+&lt;p&gt;I also like how the code and structure of the package is very reproducible and easy to follow.&lt;/p&gt;
+&lt;p&gt;The codes used in the package in the various files were neatly structured and easy to read. This is great as it might be useful for further improvements or potential pull requests in the future. Package directory was well organized.&lt;/p&gt;
+&lt;p&gt;Also, utilising &lt;code&gt;shiny::include_md()&lt;/code&gt; in the &lt;code&gt;app.R&lt;/code&gt; file (which stores code for the app) to reproduce the contents in the various markdown file in the app was neat especially to avoid copy pasting.&lt;/p&gt;
+&lt;p&gt;In terms of documentation, it was clearly written and understandable. Reading the documentation would allow one to be able to get started with the package.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;self-review&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Self-Review&lt;/h1&gt;
-&lt;div id=&#34;what-i-think-was-done-well&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What I think was done well&lt;/h2&gt;
-&lt;div id=&#34;planning-exploratory-data-analysis&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Planning &amp;amp; Exploratory Data Analysis&lt;/h3&gt;
-&lt;p&gt;I thought the planning phase was thorough and significantly improved efficiency of making the app. A lot of thought was put into making an app that is useful and relevant with the current situation. I think the planning phase is crucial before any execution could even begin and this is where &lt;strong&gt;exploratory Data analysis&lt;/strong&gt; came into play.&lt;/p&gt;
-&lt;p&gt;First, I had to look around data (luckily I have gone through some covid-19 data before *see previous blog posts) and asked: what could be done &amp;amp; what would I want to see. Lucky for me, I remembered stumbling upon a twitter post awhile back that showed Europe having more cases than USA for the first time *unfortunately lost the post since. So it gave me the idea start with. So I looked more about the topic and read articles relating to virus’ seasonality and also look at other apps out there for inspiration. Hence led me to thinking that an app that specifically examines virus’ seasonality would be useful and different.&lt;/p&gt;
-&lt;p&gt;Especially being relatively new to &lt;code&gt;Shiny&lt;/code&gt;, I understood that I need to come up with an elaborate plan within my capabilities, knowledge and time frame. Although I had to look through my notes and lectures, counterintuitively, I think having a sufficiently elaborate plan enabled efficiency in execution.&lt;/p&gt;
+&lt;div id=&#34;what-did-i-think-the-package-do-did-it-do-it&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What did I think the package do? Did it do it? 🤔&lt;/h2&gt;
+&lt;p&gt;Simply scheming through the README file was suffice for me to use the package.&lt;/p&gt;
+&lt;p&gt;The package includes a single-line code: &lt;code&gt;launch_app()&lt;/code&gt; which launches the embedded app. Unfortunately, I could not get the app to run with the function. It seems to me that the app should be nested one more folder deeper in the &lt;code&gt;inst&lt;/code&gt; directory like so:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;COVID19bb_package
+├── inst
+  ├── app
+    ├── app.R&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;*see &lt;a href=&#34;https://deanattali.com/2015/04/21/r-package-shiny-app/&#34;&gt;Dean Attali’s website&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;Nonetheless, opening the app interally from the &lt;code&gt;app.R&lt;/code&gt; file works fine. The package did exactly what it sought out to do- provides an intuitive, easy to understand visualization tool to analyse COVID-19 situation across the 3 aforementioned indicators. Encapsulated in a package, it enhances reproducibility and accessibility.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;layout-of-the-app&#34; class=&#34;section level3&#34;&gt;
-&lt;h3&gt;Layout of the app&lt;/h3&gt;
-&lt;p&gt;Instead of the usual &lt;code&gt;fludPage&lt;/code&gt; set up, &lt;code&gt;navbarPage&lt;/code&gt; was used. The enabled the app’s layout to be highly customisable as it allowed each &lt;code&gt;tabPanel&lt;/code&gt; to exist as a page on its own&lt;/p&gt;
-&lt;p&gt;In Tab 1, &lt;code&gt;fluidRow&lt;/code&gt; and &lt;code&gt;column&lt;/code&gt; were employed to set aside grid space to position each of the identical elements in a neat manner. The plots were vertically aligned to facilitate comparison of countries in Tropics, Northern &amp;amp; Southern Hemisphere.&lt;/p&gt;
-&lt;p&gt;In Tab 2, the advantage of &lt;code&gt;navbarPage&lt;/code&gt; was utilized. With a &lt;code&gt;sidebarLayout&lt;/code&gt;, after the &lt;code&gt;sideBarPanel&lt;/code&gt; was in place, the map can be plotted to fill the entire page in the &lt;code&gt;mainPanel&lt;/code&gt;. This enabled users to view the map and its corresponding plots side by side for easy comparison.&lt;/p&gt;
-&lt;p&gt;Lastly, Shiny’s &lt;code&gt;tags$list&lt;/code&gt; was applied extensively to configure the text on the app.
-These functions recreate &lt;code&gt;html tags&lt;/code&gt; under the hood. This was useful for someone who is more
-comfortable in using R code than raw html code. After all, Shiny is a html web page.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;improvements&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Improvements 👾&lt;/h1&gt;
+&lt;p&gt;I think before we talk about improvements it is important to note the limited time frame allowed and with that a package can almost always be improved.&lt;/p&gt;
+&lt;div id=&#34;codefunctions&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Code/Functions 📜&lt;/h2&gt;
+&lt;p&gt;In terms of the functions, &lt;code&gt;select_input&lt;/code&gt; had the capacity to output a &lt;code&gt;shiny&lt;/code&gt; interactive drop down menu. Whereas &lt;code&gt;table_filter&lt;/code&gt; function might have overlooked an output. Also, it is currently fixed to China, 8 August 2020 and deaths. I think a way to improve this function is to generalise it. My recommendation would be:&lt;/p&gt;
+&lt;p&gt;from:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;table_filter &amp;lt;- function(data, country, type, date){
+
+  data &amp;lt;- data %&amp;gt;%
+    dplyr::filter(country_region == &amp;quot;China&amp;quot;,
+                  type == &amp;quot;deaths&amp;quot;,
+                  observation_date == &amp;quot;2020-08-23&amp;quot; )%&amp;gt;%
+    kableExtra::kable(align = &amp;#39;lccr&amp;#39;, caption = &amp;quot;Daily cases of COVID-19&amp;quot;) %&amp;gt;%
+    kableExtra::kable_styling(
+      font_size = 12,
+      bootstrap_options = c(&amp;quot;striped&amp;quot;, &amp;quot;hover&amp;quot;, &amp;quot;condensed&amp;quot;))
+
+data
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;table_filter &amp;lt;- function(data, country, type, date){
+data %&amp;gt;% #&amp;lt;&amp;lt;
+  dplyr::filter(country_region %in% country, # &amp;lt;&amp;lt;
+                type == type,
+                lubridate::mdy(observation_date) == lubridate::ymd(date)) %&amp;gt;% # &amp;lt;&amp;lt;
+  kableExtra::kable(align = &amp;#39;lccr&amp;#39;, caption = glue::glue(&amp;quot;Daily {type} of COVID-19&amp;quot;)) %&amp;gt;% # &amp;lt;&amp;lt;
+  kableExtra::kable_styling(
+    font_size = 12,
+    bootstrap_options = c(&amp;quot;striped&amp;quot;, &amp;quot;hover&amp;quot;, &amp;quot;condensed&amp;quot;))
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;However, these functions were somewhat hidden as they were not used in the app nor were examples shown in README.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;shiny-app&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Shiny app 🌌&lt;/h2&gt;
+&lt;p&gt;Regarding efficiency, map is laggy to use and takes a long time to load (about 30 seconds). Probably due to its underlying large data set. I might find an alternative to &lt;code&gt;HighCharter&lt;/code&gt;, perhaps &lt;code&gt;ggplot2&lt;/code&gt;. Also, consider placing one of loaders to indicate that it is loading (&amp;amp; alleviate the pain of waiting) &lt;a href=&#34;https://github.com/daattali/shinycssloaders&#34;&gt;Dean Atalli’s &lt;code&gt;shinycssloaders&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://emitanaka.org/shinycustomloader/&#34;&gt;Emi Tanaka’s &lt;code&gt;shinycustomloader&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In “Trend among regions over time” tab. Being specific was great. However, might want improve drop down menu as there were too many options to scroll through. A good way to browse through options is to run &lt;code&gt;shinyWidgets::shinyWidgetsGallery()&lt;/code&gt;. I think a good one could be &lt;code&gt;pickerInput&lt;/code&gt; to distinguish cities of different countries. &lt;img src=&#34;pickerinput.png&#34; style=&#34;height:4cm&#34; alt=&#34;pickerInput&#34; /&gt;
+Unfortunately, I had an error ‘observation_date not found’ trying to produce the plots.&lt;/p&gt;
+&lt;p&gt;Lastly, A lot of white space in the app makes it look empty. I would recommend possibly putting tabs all in one page, reduce height of tabs or enlarge elements. Instructions within the app could also be elaborated so as to not have to refer elsewhere.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;what-ive-learnt&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;What I’ve learnt 🎅&lt;/h2&gt;
+&lt;p&gt;The content and idea behind the package and app were great. I learnt that some nuances can make a difference when someone is using the app for analysis and especially being on the user side, I found user interface is of paramount importance (NTS: to always ask someone to review your package!). Appearance &amp;amp; ease of use of the app’s interface does affect analysis and enjoyment.&lt;/p&gt;
+&lt;p&gt;Lastly, a cool feature I learnt is that I could use &lt;code&gt;\dontrun{}&lt;/code&gt; to show in the documentation example which will not run the code as the name suggests (I used to do it manually).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;summing-up&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Summing up 👋&lt;/h1&gt;
+&lt;p&gt;Overall, &lt;code&gt;COVID19bb&lt;/code&gt; app provides a no-fuss package that gives a good general overview of the covid-19 situation across familiar indicators, catering to a wide audience.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;appendix-review-checklist&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Appendix: Review Checklist&lt;/h1&gt;
+&lt;div id=&#34;package-review&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Package Review&lt;/h2&gt;
+&lt;div id=&#34;documentation&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Documentation&lt;/h3&gt;
+&lt;ul class=&#34;task-list&#34;&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34; checked=&#34;&#34; /&gt;
+&lt;strong&gt;Installation instructions&lt;/strong&gt; for the package is found in README&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34; checked=&#34;&#34; /&gt;
+&lt;strong&gt;Vignettes(s)&lt;/strong&gt; demonstrating major functionality that runs successfully locally&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34; checked=&#34;&#34; /&gt;
+&lt;strong&gt;Function Documentation&lt;/strong&gt; for all exported functions in R help&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id=&#34;functionality&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Functionality&lt;/h3&gt;
-&lt;p&gt;This app was created to optimize its functionality reflected in its layout, contents and reactivity components. Comparing within country (Tab 2) provides a understand the case in hand (covid’s Seasonality). It has blue shaded rectangles indicating winter months. The scales were set free as
-the main point of this tab was to compare each country’s (at different hemisphere) trend in the different seasons.&lt;/p&gt;
-&lt;p&gt;In comparing across countries (Tab 3), I acknowledged that many variables come into play.
-One of it was population. Hence, the reactivity component allowed users to toggle
-between indicators (one of raw count and the other per 100,000 population). Again,
-to be able to compare counts in each season, the user must be able to set a date range. Lastly,
-a &lt;code&gt;data table&lt;/code&gt; was embedded including a lockdown variable as I think lockdown is a big factor
-in differentiating the case counts of countries.&lt;/p&gt;
-&lt;p&gt;I would like to add that putting a “Show” &lt;code&gt;ActionButton&lt;/code&gt; to update the map was useful so
-to avoid users having to load the map each time a country is added to the list.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what-can-be-improved&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What can be improved&lt;/h2&gt;
-&lt;p&gt;I thought the interface of the app could be improved to make the app more appealing and welcoming. Even though the creative juices may be running, many of the times I need to consider its feasibility especially given the limited time. For example, using &lt;code&gt;css&lt;/code&gt; to style the web page with icons, fancier fonts etc. would be nice.&lt;/p&gt;
-&lt;p&gt;I would say the map could be improved. A “click-to-show” instead of hovering over the points may be a better user interface. In hindsight, using &lt;code&gt;leaflet&lt;/code&gt; map could have been a better option with its zooming in and out feature.&lt;/p&gt;
-&lt;p&gt;Incidentally, I was unable to deploy the app in &lt;code&gt;shinyapps.io&lt;/code&gt; as the data set was too big and free users are only entitled to instance size of 1GB. A workaround this this may be to use leaflet to significantly cull the data (by separating &lt;code&gt;world&lt;/code&gt; map data and coronavirus &lt;code&gt;data&lt;/code&gt; instead of putting them together).&lt;/p&gt;
-&lt;p&gt;Furthermore, I believe that the interactive elements could also be better. For example, connecting the different plots to map by clicks. I also thought of hovering over number of cases (fill bar) which interacts with the map to show the number of countries hitting that threshold would be neat.&lt;/p&gt;
-&lt;p&gt;And, &lt;strong&gt;animating&lt;/strong&gt; the map to see the different number of cases (with fill colour changing according to a metric e.g. number of cases) over time; in a date range specified by the user would be very interesting and helpful to examine the covid’s seasonality. Will try to do these in the near future!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;what-can-be-improved-limited-by-datatechnology&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;What can be improved (limited by data/technology)&lt;/h2&gt;
-&lt;p&gt;Regarding coronavirus data on covid-19 across the world, issues around discrepancy in data collection methods and rules would cause comparability problems. For example, countries may have different testing rates, delays in reporting, lockdown measures.&lt;/p&gt;
-&lt;p&gt;Also, the lag in loading speed might be a hindrance when it comes to doing an analysis. Increasing the internet speed would certainly improve the app’s performance.&lt;/p&gt;
-&lt;p&gt;Clicking on a country on the map provides a walkthrough of latest relevant news on covid a country and a brief summary of its latest happenings (could be a little far fetched).&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;software-references&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Software References&lt;/h1&gt;
-&lt;p&gt;All these are done using &lt;code&gt;R&lt;/code&gt; software using &lt;code&gt;Hugo Blogdown&lt;/code&gt; template&lt;/p&gt;
-&lt;p&gt;Including these &lt;code&gt;R&lt;/code&gt; packages were referenced:&lt;br /&gt;
-- &lt;code&gt;Shiny&lt;/code&gt;: &lt;span class=&#34;citation&#34;&gt;Chang et al. (2020)&lt;/span&gt;&lt;br /&gt;
-- &lt;code&gt;DT&lt;/code&gt;: &lt;span class=&#34;citation&#34;&gt;Xie, Cheng, and Tan (2020)&lt;/span&gt;&lt;br /&gt;
-- &lt;code&gt;leaflet&lt;/code&gt;: &lt;span class=&#34;citation&#34;&gt;Cheng, Karambelkar, and Xie (2019)&lt;/span&gt;&lt;br /&gt;
-- &lt;code&gt;tidyverse&lt;/code&gt;: &lt;span class=&#34;citation&#34;&gt;Wickham et al. (2019)&lt;/span&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;references&#34; class=&#34;section level1 unnumbered&#34;&gt;
-&lt;h1&gt;References&lt;/h1&gt;
-&lt;div id=&#34;refs&#34; class=&#34;references hanging-indent&#34;&gt;
-&lt;div id=&#34;ref-Rshiny&#34;&gt;
-&lt;p&gt;Chang, Winston, Joe Cheng, JJ Allaire, Yihui Xie, and Jonathan McPherson. 2020. &lt;em&gt;Shiny: Web Application Framework for R&lt;/em&gt;. &lt;a href=&#34;https://CRAN.R-project.org/package=shiny&#34;&gt;https://CRAN.R-project.org/package=shiny&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ref-Rleaflet&#34;&gt;
-&lt;p&gt;Cheng, Joe, Bhaskar Karambelkar, and Yihui Xie. 2019. &lt;em&gt;Leaflet: Create Interactive Web Maps with the Javascript ’Leaflet’ Library&lt;/em&gt;. &lt;a href=&#34;https://CRAN.R-project.org/package=leaflet&#34;&gt;https://CRAN.R-project.org/package=leaflet&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ref-bbc-winter&#34;&gt;
-&lt;p&gt;Gallagher, James. 2020. “Coronavirus: How Bad Will Winter Really Be?” &lt;a href=&#34;https://www.bbc.com/news/health-53515077&#34;&gt;https://www.bbc.com/news/health-53515077&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ref-cnbc&#34;&gt;
-&lt;p&gt;Meredith, Sam. 2020. “Health Experts Sound the Alarm on a Possible New Coronavirus Wave This Winter.” &lt;a href=&#34;https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html&#34;&gt;https://www.cnbc.com/2020/09/02/coronavirus-and-winter-health-experts-wary-about-a-possible-new-wave.html&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ref-wash-post&#34;&gt;
-&lt;p&gt;Sun, Lena. 2020. “CDC Director Warns Second Wave of Coronavirus Is Likely to Be Even More Devastating.” &lt;a href=&#34;https://www.washingtonpost.com/health/2020/04/21/coronavirus-secondwave-cdcdirector/&#34;&gt;https://www.washingtonpost.com/health/2020/04/21/coronavirus-secondwave-cdcdirector/&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ref-Rtidyverse&#34;&gt;
-&lt;p&gt;Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” &lt;em&gt;Journal of Open Source Software&lt;/em&gt; 4 (43): 1686. &lt;a href=&#34;https://doi.org/10.21105/joss.01686&#34;&gt;https://doi.org/10.21105/joss.01686&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;ref-Rdt&#34;&gt;
-&lt;p&gt;Xie, Yihui, Joe Cheng, and Xianying Tan. 2020. &lt;em&gt;DT: A Wrapper of the Javascript Library ’Datatables’&lt;/em&gt;. &lt;a href=&#34;https://CRAN.R-project.org/package=DT&#34;&gt;https://CRAN.R-project.org/package=DT&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34; checked=&#34;&#34; /&gt;
+&lt;strong&gt;Installation&lt;/strong&gt; succeeds as documented.&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;[] &lt;strong&gt;Functionality&lt;/strong&gt; Any functional claims of the software been confirmed&lt;br /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;input type=&#34;checkbox&#34; disabled=&#34;&#34; checked=&#34;&#34; /&gt;
+&lt;strong&gt;Automated tests:&lt;/strong&gt; Unit tests cover essential functions of the package and a reasonable range of inputs and conditions. All tests pass on the local machine.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -718,24 +735,6 @@ Three
 &lt;a href=&#34;https://spectrum.chat/academic&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ask&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#create-slides&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Privacy Policy</title>
-      <link>/privacy/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
-      <guid>/privacy/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Terms</title>
-      <link>/terms/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
-      <guid>/terms/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
 </description>
     </item>
     
