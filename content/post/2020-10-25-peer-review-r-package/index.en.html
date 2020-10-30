@@ -1,0 +1,134 @@
+---
+title: Peer Review R-Package
+author: Brenwin
+date: '2020-10-25'
+slug: peer-review-r-package
+categories: []
+tags:
+  - Rpackage
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-10-25T16:50:06+11:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+highlight: tango
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+<link href="/rmarkdown-libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/anchor-sections/anchor-sections.js"></script>
+
+
+<p>This blog post would be slightly special as it would be about peer reviewing a fellow classmate, Yiwen’s <code>R</code>package called <code>COVID19bb</code>(see <a href="https://github.com/etc5523-2020/r-package-assessment-Yiwen-Zhang-259">github link</a>).</p>
+<p>I think peer reviewing is a good practice. By providing and receiving feedback (especially fresh after doing the same task), we get to learn how others solve similar problems faced and learn new perspectives &amp; methods. It is also in ways a process for self reflection.</p>
+<div id="covid19bb-package-overview" class="section level1">
+<h1><code>COVID19bb</code> Package Overview 📦</h1>
+<p>This package attempts to assess the global situation of the coronavirus with 3 commonly used and familiar indicators namely <em>cases</em>, <em>deaths</em> and <em>recovered</em>.</p>
+<p>It comes with it an embedded <code>Shiny</code> app with 3 tabs which shows different visualizations.</p>
+<div id="what-i-liked-about-it" class="section level2">
+<h2>What I liked about it 💯</h2>
+<p>I really enjoyed the simplicity and the ease &amp; intuitiveness to get started with the package and app.
+Especially when it comes to logical flow of the app. It starts off general with a world map before going into city level summarized and daily level.</p>
+<p>I also like how the code and structure of the package is very reproducible and easy to follow.</p>
+<p>The codes used in the package in the various files were neatly structured and easy to read. This is great as it might be useful for further improvements or potential pull requests in the future. Package directory was well organized.</p>
+<p>Also, utilising <code>shiny::include_md()</code> in the <code>app.R</code> file (which stores code for the app) to reproduce the contents in the various markdown file in the app was neat especially to avoid copy pasting.</p>
+<p>In terms of documentation, it was clearly written and understandable. Reading the documentation would allow one to be able to get started with the package.</p>
+</div>
+<div id="what-did-i-think-the-package-do-did-it-do-it" class="section level2">
+<h2>What did I think the package do? Did it do it? 🤔</h2>
+<p>Simply scheming through the README file was suffice for me to use the package.</p>
+<p>The package includes a single-line code: <code>launch_app()</code> which launches the embedded app. Unfortunately, I could not get the app to run with the function. It seems to me that the app should be nested one more folder deeper in the <code>inst</code> directory like so:</p>
+<pre><code>COVID19bb_package
+├── inst
+  ├── app
+    ├── app.R</code></pre>
+<p>*see <a href="https://deanattali.com/2015/04/21/r-package-shiny-app/">Dean Attali’s website</a> for more details.</p>
+<p>Nonetheless, opening the app interally from the <code>app.R</code> file works fine. The package did exactly what it sought out to do- provides an intuitive, easy to understand visualization tool to analyse COVID-19 situation across the 3 aforementioned indicators. Encapsulated in a package, it enhances reproducibility and accessibility.</p>
+</div>
+</div>
+<div id="improvements" class="section level1">
+<h1>Improvements 👾</h1>
+<p>I think before we talk about improvements it is important to note the limited time frame allowed and with that a package can almost always be improved.</p>
+<div id="codefunctions" class="section level2">
+<h2>Code/Functions 📜</h2>
+<p>In terms of the functions, <code>select_input</code> had the capacity to output a <code>shiny</code> interactive drop down menu. Whereas <code>table_filter</code> function might have overlooked an output. Also, it is currently fixed to China, 8 August 2020 and deaths. I think a way to improve this function is to generalise it. My recommendation would be:</p>
+<p>from:</p>
+<pre><code>table_filter &lt;- function(data, country, type, date){
+
+  data &lt;- data %&gt;%
+    dplyr::filter(country_region == &quot;China&quot;,
+                  type == &quot;deaths&quot;,
+                  observation_date == &quot;2020-08-23&quot; )%&gt;%
+    kableExtra::kable(align = &#39;lccr&#39;, caption = &quot;Daily cases of COVID-19&quot;) %&gt;%
+    kableExtra::kable_styling(
+      font_size = 12,
+      bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;))
+
+data
+}</code></pre>
+<p>to:</p>
+<pre><code>table_filter &lt;- function(data, country, type, date){
+data %&gt;% #&lt;&lt;
+  dplyr::filter(country_region %in% country, # &lt;&lt;
+                type == type,
+                lubridate::mdy(observation_date) == lubridate::ymd(date)) %&gt;% # &lt;&lt;
+  kableExtra::kable(align = &#39;lccr&#39;, caption = glue::glue(&quot;Daily {type} of COVID-19&quot;)) %&gt;% # &lt;&lt;
+  kableExtra::kable_styling(
+    font_size = 12,
+    bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;, &quot;condensed&quot;))
+}</code></pre>
+<p>However, these functions were somewhat hidden as they were not used in the app nor were examples shown in README.</p>
+</div>
+<div id="shiny-app" class="section level2">
+<h2>Shiny app 🌌</h2>
+<p>Regarding efficiency, map is laggy to use and takes a long time to load (about 30 seconds). Probably due to its underlying large data set. I might find an alternative to <code>HighCharter</code>, perhaps <code>ggplot2</code>. Also, consider placing one of loaders to indicate that it is loading (&amp; alleviate the pain of waiting) <a href="https://github.com/daattali/shinycssloaders">Dean Atalli’s <code>shinycssloaders</code></a> or <a href="https://emitanaka.org/shinycustomloader/">Emi Tanaka’s <code>shinycustomloader</code></a></p>
+<p>In “Trend among regions over time” tab. Being specific was great. However, might want improve drop down menu as there were too many options to scroll through. A good way to browse through options is to run <code>shinyWidgets::shinyWidgetsGallery()</code>. I think a good one could be <code>pickerInput</code> to distinguish cities of different countries. <img src="pickerinput.png" style="height:4cm" alt="pickerInput" />
+Unfortunately, I had an error ‘observation_date not found’ trying to produce the plots.</p>
+<p>Lastly, A lot of white space in the app makes it look empty. I would recommend possibly putting tabs all in one page, reduce height of tabs or enlarge elements. Instructions within the app could also be elaborated so as to not have to refer elsewhere.</p>
+</div>
+<div id="what-ive-learnt" class="section level2">
+<h2>What I’ve learnt 🎅</h2>
+<p>The content and idea behind the package and app were great. I learnt that some nuances can make a difference when someone is using the app for analysis and especially being on the user side, I found user interface is of paramount importance (NTS: to always ask someone to review your package!). Appearance &amp; ease of use of the app’s interface does affect analysis and enjoyment.</p>
+<p>Lastly, a cool feature I learnt is that I could use <code>\dontrun{}</code> to show in the documentation example which will not run the code as the name suggests (I used to do it manually).</p>
+</div>
+</div>
+<div id="summing-up" class="section level1">
+<h1>Summing up 👋</h1>
+<p>Overall, <code>COVID19bb</code> app provides a no-fuss package that gives a good general overview of the covid-19 situation across familiar indicators, catering to a wide audience.</p>
+</div>
+<div id="appendix-review-checklist" class="section level1">
+<h1>Appendix: Review Checklist</h1>
+<div id="package-review" class="section level2">
+<h2>Package Review</h2>
+<div id="documentation" class="section level3">
+<h3>Documentation</h3>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" checked="" />
+<strong>Installation instructions</strong> for the package is found in README<br />
+</li>
+<li><input type="checkbox" disabled="" checked="" />
+<strong>Vignettes(s)</strong> demonstrating major functionality that runs successfully locally<br />
+</li>
+<li><input type="checkbox" disabled="" checked="" />
+<strong>Function Documentation</strong> for all exported functions in R help</li>
+</ul>
+</div>
+<div id="functionality" class="section level3">
+<h3>Functionality</h3>
+<ul>
+<li><input type="checkbox" disabled="" checked="" />
+<strong>Installation</strong> succeeds as documented.<br />
+</li>
+<li>[] <strong>Functionality</strong> Any functional claims of the software been confirmed<br />
+</li>
+<li><input type="checkbox" disabled="" checked="" />
+<strong>Automated tests:</strong> Unit tests cover essential functions of the package and a reasonable range of inputs and conditions. All tests pass on the local machine.</li>
+</ul>
+</div>
+</div>
+</div>
